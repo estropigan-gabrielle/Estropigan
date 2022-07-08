@@ -1,0 +1,46 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+        <div>
+                <center>
+                        <p class="Btitle1">MOUSE</p>
+                </center>
+        </div>
+        
+        <div>
+                <p class="Bline1">______________________________________________________________________________________________________________</p>
+        </div>
+
+        <div class="grid-containerB">
+                <div class="Bcontainer1">
+                        <img src= "{% static 'images/mouse.webp' %}" title="Mouse" width="150" height="150" class="Bimg1b">
+                        <p class="Bdescription1a">
+                        A <b>COMPUTER MOUSE</b> is a handheld hardware input device that moves and selects text, icons, files, and folders on your computer by controlling a pointer in a <acronym title="GRAPHICAL USER INTERFACE">GUI</acronym>. The mouse is positioned in front of your computer on a flat surface (e.g., a mouse pad or a desk) for desktop PCs. The mouse has 3 major parts which are first the left mouse button. Left mouse button is used for selecting, clicking, and double-clicking. Right mouse button is used for right-clicking or for example, in order to refresh your desktop you need to right click the mouse to open a dialog box that will show the different options in desktop and one of it is the refresh. The third part is the scroll wheel which function is to scroll a webpage or any applications that uses scrolls. </p>
+                </div>
+                <div class="Bcontainer2">
+                        <p class="Btitle2">-----MOUSE TRIVIA OF THE DAY-----</p>
+                        <p class="Bdescription2">Douglas Engelbart designed the mouse in 1964, and it <br> was made out of a wooden shell, a circuit board, and two<br> metal wheels that made contact with the surface it was used on.</p>
+                        <a href="https://www.computerworld.com/article/2483562/douglas-engelbart--inventor-of-the-computer-mouse--has-died.html" target="_blank">
+                        <img src= "{% static 'images/mousetrivia1.webp' %}" title="Douglas Engelbart" width="100" height="110" class="Bimg2c">
+                        </a>	
+                </div>
+                <div class="Bcontainer3">
+                        <p class="Bdescription3">TO REVIEW THE LATEST<br> MOUSE JUST CHOOSE<br> ON THE OPTIONS ON<br> THE LEFT SIDE!
+                        </p>
+                </div>
+                <div class="Bcontainer4">
+                        <h1 class="Btitle5"><center>TOP 3 MOUSE&nbsp;BRANDS</center></h1>
+                        <ol class="Blist1">
+                        <li class="Blist1margin"><a href="{% url 'mouseRazer/'%}" class="Boptions2b1" title="RAZER MOUSE">RAZER</a></li>
+                        <li class="Blist1margin"><a href="{% url 'mouseLogitech/'%}" class="Boptions2b1" title="LOGITECH MOUSE">LOGITECH</a></li>
+                        <li class="Blist1margin"><a href="{% url 'mouseSteel/'%}" class="Boptions2b1" title="STEEL SERIES MOUSE">STEEL<br>SERIES</a></li>
+                        </ol>
+                </div>
+                <div class="Bcontainer6">
+                        <center>
+                        <iframe class="Bvid1" width="180" height="110" src="https://www.youtube.com/embed/ndYuHvDtwA0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </center>	
+                </div>
+        </div>
+</body>
+{%endblock%}

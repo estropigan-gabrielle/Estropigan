@@ -1,0 +1,167 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+		<script type="text/javascript">
+			function showCompare(price){
+			    console.log('Show Modal');
+			    document.querySelector('#modal-compare').style.display = 'flex';
+			    document.querySelector('#price').value = price;
+			}
+
+			function showModal(){
+			}
+
+				function hideModal(){
+				    console.log('Hide Modal');
+				    document.querySelector('#modal-compare').style.display = 'none';
+			}
+
+			function comparePrice(){
+			    let price = document.querySelector('#price').value;
+			    let cash = document.querySelector('#cash').value;
+			    console.log(price);
+			    console.log(cash);
+			    console.log(Number(cash) >= Number(price));
+			    console.log(Number(price) - Number(cash));
+
+			    if (Number(cash) == Number(price)){
+			    	document.querySelector('#message-equal').style.display = 'flex';
+			    	document.querySelector('#message-enough').style.display = 'none';
+			        document.querySelector('#message-short').style.display = 'none';
+			        document.querySelector('#equal').innerHTML = 'Your budget is enough!';
+			    }
+			    else if(Number(cash) >= Number(price)){
+			        document.querySelector('#message-enough').style.display = 'flex';
+			        document.querySelector('#message-short').style.display = 'none';
+			        document.querySelector('#message-equal').style.display = 'none';
+			        document.querySelector('#enough').innerHTML = 'You have enough budget! \nYou have an extra ₱' + [(Number(cash)).toString()-Number(price)]+'\nCheck and review more items!';
+			    }
+
+			    else{
+			        document.querySelector('#message-short').style.display = 'flex';
+			        document.querySelector('#message-enough').style.display = 'none';
+			        document.querySelector('#message-equal').style.display = 'none';
+			        document.querySelector('#short').innerHTML = 'You don\'t have enough budget! \nYou need additional ₱' +  (Number(price) - Number(cash)).toString();
+			    }
+			}	
+		</script>
+	</head>
+
+	<body class="bodyBG">
+
+		<div>
+			<center>
+				<p class="Dtitle1">CORSAIR K55 RGB </p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Dline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+
+		<div class="grid-containerD">
+			<div class="Dcontainer2">
+				<a class="Doptions2A" href="{% url 'keyboardCorsair/'%}">BACK</a>
+			</div>
+			
+			<div class="Dcontainer3">
+
+				<button type="button" onclick="showCompare(3200)"class="Ebuttons2">Compare The Price!</button>
+
+				<div class="bg-modal" id="modal-compare">
+					<div class="modal-compare">
+						<form>
+                                                        <h3>PRICE VS. BUDGET</h3>
+                                                        <table>
+                                                                <tr>
+                                                                        <td>
+                                                                                Unit Price: 
+                                                                        </td>
+                                                                        <td>
+                                                                                <input type="text" name="price" value="" id="price" disabled>
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>
+                                                                                Budget:
+                                                                        </td>
+                                                                        <td>
+                                                                                <input type="number" name="cash" value="" id="cash">
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                        <input type="button" class="Ebuttons1 button-modal" onclick="comparePrice()" value="Compare">
+                                                        <center>
+                                                                <div class="compare-short" id="message-short">
+                                                                        <p id="short"></p>
+                                                                </div>
+                                                                <div class="compare-enough" id="message-enough">
+                                                                        <p id="enough"></p>
+                                                                </div>
+                                                                <div class="compare-equal" id="message-equal">
+                                                                        <p id="equal"></p>
+                                                                </div>
+                                                        </center>
+                                                        <div class="close-modal" onclick="hideModal()">+</div>
+                                                </form>
+					</div>
+				</div>
+				
+				<img src="{% static 'images/corKEY5.webp' %}" class="Dimg1p"width="250px" height="240px" title="Corsair K55 RGB | Photo Credits: www.corsair.com">
+			</div>
+			<div class="Dcontainer4">
+                                        <table class="Ddescription1">
+                                                <tr>
+                                                        <td class="Ddescription1color"><b>GENERAL&nbsp;INFORMATION</b></td>
+                                                        <td></td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">NAME:</td>
+                                                        <td>CORSAIR K55 RGB</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">TMTK RATINGS:</td>
+                                                        <td>3.5 / 5</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">RELEASE DATE:</td>
+                                                        <td>November 22, 2016</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">PRICE:</td>
+                                                        <td>3,200 PHP</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">KEYBOARD TYPE:</td>
+                                                        <td>WIRED (USB)</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">KEY LIFE:</td>
+                                                        <td>18,000,000 KEY STROKES</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">Download the Full Specs:</td>
+                                                        <td><a href="pdf/corKEY5.pdf" class="Ddescription1" target="_blank">Corsair Keyboard 5</a></td>
+                                                </tr>
+                                        </table>
+                                        
+                                        
+                                </div>
+                                <div class="Dcontainer5">
+                                        <p class="Ddescription2">This keyboard has 110 keys or like a 100% of a normal keyboard. It's a good full-sized gaming keyboard with rubber dome switches that don't provide the same tactile sensation as mechanical switches on most gaming keyboards. It features six additional macro keys that can be customized to your taste because each key is macro programmable. The keys are sturdy, although they seem heavy to type on, and long hours of typing may cause weariness.</p>	
+                                </div>
+                                <div class="Dcontainer6">
+                                        <iframe class="Dvid1" width="300" height="110" src="https://www.youtube.com/embed/innYFupZ2jA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+        
+                                <div class="Dcontainer7">
+                                        <br>
+                                        <center>
+                                        <a class="Ddescription3" href="{% url 'feedback/'%}">DID YOU LIKE OUR REVIEW? PLEASE SEND US A FEEDBACK!</a>	
+                                        </center>			
+                                </div>
+                        
+		</div>
+	</body>
+{%endblock%}

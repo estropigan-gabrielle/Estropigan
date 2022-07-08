@@ -1,0 +1,179 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+		<script type="text/javascript">
+			let razerMouseList = [
+			    { name: 'Razer Viper 8KHz', url: {% url 'razerMOU1/'%}, image: 'razerMOU1.webp', rating: '4', price: 3995 , release: new Date('2021-01-28'), creditTag: 'www.razer.com'},
+			    { name: 'Razer Basilisk X HyperSpeed', url: {% url 'razerMOU2/'%}, image: 'razerMOU2.webp', rating: '3.5', price: 3499 , release: new Date('2019-11-06'), creditTag: 'www.razer.com'},
+			    { name: 'Razer Viper Ultimate', url: {% url 'razerMOU3/'%}, image: 'razerMOU3.webp', rating: '4', price: 7499 , release: new Date('2019-10-20'), creditTag: 'www.razer.com'},
+			    { name: 'Razer DeathAdder V2 Pro', url: {% url 'razerMOU4/'%}, image: 'razerMOU4.webp', rating: '4', price: 6499 , release: new Date('2020-09-22'), creditTag: 'www.razer.com'},
+			    { name: 'Razer Basilisk Chroma', url: {% url 'razerMOU5/'%}, image: 'razerMOU5.webp', rating: '5', price: 4299 , release: new Date('2019-11-06'), creditTag: 'www.razer.com'}
+			];
+
+
+			let logitechMouseList = [
+			    { name: 'Logitech MX Master 2S', url: {% url 'logiMOU1/'%}, image: 'logiMOU1.webp', rating: '4', price: 4100  , release: new Date('2019-09-19'), creditTag: 'www.logitech.com'},
+			    { name: 'Logitech G903 Lightspeed', url: {% url 'logiMOU2/'%}, image: 'logiMOU2.webp', rating: '5', price: 5745 , release: new Date('2019-06-27'), creditTag: 'www.logitech.com'},
+			    { name: 'Logitech G304 Lightspeed', url: {% url 'logiMOU3/'%}, image: 'logiMOU3.webp', rating: '3', price: 1995 , release: new Date('2018-12-18'), creditTag: 'www.logitech.com'},
+			    { name: 'Logitech G102 Prodigy', url: {% url 'logiMOU4/'%}, image: 'logiMOU4.webp', rating: '4', price: 995.00 , release: new Date('2016-10-27'), creditTag: 'www.logitech.com'},
+			    { name: 'Logitech M185', url: {% url 'logiMOU5/'%}, image: 'logiMOU5.webp', rating: '5', price: 595 , release: new Date('2016-07-20'), creditTag: 'www.logitech.com'}
+			];
+
+			let steelseriesMouseList = [
+			    { name: 'SteelSeries Rival 710', url: {% url 'steelMOU1/'%}, image: 'steelMOU1.webp', rating: '4', price: 2470.90 , release: new Date('2018-11-21'), creditTag: 'www.steelseries.com'},
+			    { name: 'SteelSeries Rival 600', url: {% url 'steelMOU2/'%}, image: 'steelMOU2.webp', rating: '4', price: 3300 , release: new Date('2018-11-09'), creditTag: 'www.steelseries.com'},
+			    { name: 'SteelSeries Rival 310', url: {% url 'steelMOU3/'%}, image: 'steelMOU3.webp', rating: '4.5', price: 2795 , release: new Date('2017-08-21'), creditTag: 'www.steelseries.com'},
+			    { name: 'SteelSeries 62527', url: {% url 'steelMOU4/'%}, image: 'steelMOU4.webp', rating: '4.5', price: 2850 , release: new Date('2019-11-15'), creditTag: 'www.steelseries.com'},
+			    { name: 'SteelSeries Rival 3 62513', url: {% url 'steelMOU5/'%}, image: 'steelMOU5.webp', rating: '5', price: 2050 , release: new Date('2020-01-21'), creditTag: 'www.steelseries.com'}
+
+			];
+
+			let options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+			function sort(brand, field, type) {
+
+			    let list;
+
+			    if(brand == 'razer'){
+			        list = razerMouseList;
+			    }else if(brand == 'logi'){
+			        list = logitechMouseList;
+			    }else if(brand == 'steel'){
+			        list = steelseriesMouseList;
+			    }
+
+			    if(field == 'rating'){   
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.rating - b.rating;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.rating - a.rating;
+			                });
+			        }
+			    } else if (field == 'price'){
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.price - b.price;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.price - a.price;
+			                });
+			        }
+			    } else if (field == 'release'){
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.release - b.release;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.release - a.release;
+			                });
+			        }
+			    }
+
+			    console.log(list);
+
+			    document.getElementById('container3').innerHTML = '<a href="'+ list[0].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[0].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[0].name +' | Photo Credits: '+ list[0].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[0].url +'">'+ list[0].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[0].rating +' / 5<br>Price: '+ list[0].price.toLocaleString() +' PHP<br>Release: '+ list[0].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container4').innerHTML = '<a href="'+ list[1].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[1].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[1].name +' | Photo Credits: '+ list[1].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[1].url +'">'+ list[1].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[1].rating +' / 5<br>Price: '+ list[1].price.toLocaleString() +' PHP<br>Release: '+ list[1].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container5').innerHTML = '<a href="'+ list[2].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[2].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[2].name +' | Photo Credits: '+ list[2].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[2].url +'">'+ list[2].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[2].rating +' / 5<br>Price: '+ list[2].price.toLocaleString() +' PHP<br>Release: '+ list[2].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container6').innerHTML = '<a href="'+ list[3].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[3].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[3].name +' | Photo Credits: '+ list[3].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[3].url +'">'+ list[3].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[3].rating +' / 5<br>Price: '+ list[3].price.toLocaleString() +' PHP<br>Release: '+ list[3].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container7').innerHTML = '<a href="'+ list[4].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[4].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[4].name +' | Photo Credits: '+ list[4].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[4].url +'">'+ list[4].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[4].rating +' / 5<br>Price: '+ list[4].price.toLocaleString() +' PHP<br>Release: '+ list[4].release.toLocaleDateString("en-US", options) +'</p>';
+			}
+				
+		</script>
+	</head>
+
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Ctitle1">RAZER MOUSE</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Cline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+		<div class="grid-containerC">
+			<div class="Ccontainer2">
+				<form>
+					<a class="Coptions2A" href="{% url 'mouse/'%}">BACK</a>
+					<a class="Coptions2B"></a>
+					<a class="Coptions2C">SORT BY PRICE:</a>
+					<input type="button" class="sort-button" onclick="sort('razer', 'price', 'desc')" title="HIGH TO LOW" value="High to Low">
+					<a class="Coptions2C">|</a>
+					<input type="button" class="sort-button" onclick="sort('razer', 'price', 'asc')" title="LOW TO HIGH" value="Low to High">
+					<a class="Coptions2C">SORT BY RELEASE DATE:</a>
+					<input type="button" class="sort-button" onclick="sort('razer', 'release', 'desc')" title="RECENT TO OLDEST" value="Latest to Oldest">
+					<a class="Coptions2C">|</a>
+					<input type="button" class="sort-button" onclick="sort('razer', 'release', 'asc')" title="OLDEST TO RECENT" value="Oldest to Latest">
+				</form>
+			</div>
+			
+			<div class="Ccontainer3" id="container3">
+				<a href="{% url 'razerMOU1/'%}">
+				<img src="{% static 'images/razerMOU1.webp' %}" class="Cimg1"width="150px" height="130px" title="Razer Viper 8KHz  | Photo Credits: www.razer.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'razerMOU1/'%}">Razer Viper 8KHz </a>
+				<p class="Cdescription1">TMTK Ratings: 4 / 5<br>Price: 3,995 PHP<br>Release: January 28, 2021</p>
+			</div>
+			<div class="Ccontainer4" id="container4">
+				<a href="{% url 'razerMOU2/'%}">
+				<img src="{% static 'images/razerMOU2.webp' %}" class="Cimg1"width="150px" height="130px" title="Razer Basilisk X HyperSpeed | Photo Credits: www.razer.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'razerMOU2/'%}">Razer Basilisk X HyperSpeed</a>
+				<p class="Cdescription1">TMTK Ratings: 3.5 / 5<br>Price: 3,499 PHP<br>Release: November 6, 2019</p>
+			</div>
+			<div class="Ccontainer5" id="container5">
+				<a href="{% url 'razerMOU3/'%}">
+				<img src="{% static 'images/razerMOU3.webp' %}" class="Cimg1"width="150px" height="130px" title="Razer Viper Ultimate | Photo Credits: www.razer.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'razerMOU3/'%}">Razer Viper Ultimate</a>
+				<p class="Cdescription1">TMTK Ratings: 4 / 5<br>Price: 7,499 PHP<br>Release: October 20, 2019</p>							
+			</div>
+			<div class="Ccontainer6" id="container6">
+				<a href="{% url 'razerMOU4/'%}">
+				<img src="{% static 'images/razerMOU4.webp' %}" class="Cimg1"width="150px" height="130px" title="Razer DeathAdder V2 Pro  | Photo Credits: www.razer.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'razerMOU4/'%}">Razer DeathAdder V2 Pro</a>
+				<p class="Cdescription1">TMTK Ratings: 4 / 5<br>Price: 6,499 PHP<br>Release: September 22, 2020</p>										
+			</div>
+			<div class="Ccontainer7" id="container7">
+				<a href="{% url 'razerMOU5/'%}">
+				<img src="{% static 'images/razerMOU5.webp' %}" class="Cimg1"width="120px" height="130px" title="Razer Basilisk Chroma | Photo Credits: www.razer.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'razerMOU5/'%}">Razer Basilisk Chroma</a>
+				<p class="Cdescription1">TMTK Ratings: 5 / 5<br>Price: 4,299 PHP<br>Release: November 6, 2019</p>
+			</div>
+			<div class="Ccontainer8">
+			</div>
+		</div>
+	</body>
+{%endblock%}

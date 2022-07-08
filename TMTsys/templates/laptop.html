@@ -1,0 +1,45 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+		<div>
+			<center>
+				<p class="Btitle1">LAPTOP</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Bline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+		<div class="grid-containerB">
+			<div class="Bcontainer1">
+				<img src= "{% static 'images/laptop.webp' %}" title="Laptop" width="150" height="130" class="Bimg1">
+				<p class="Bdescription1">A <b>LAPTOP</b> is a tiny, portable computer having a display and a keyboard. Although 2-in-1 PCs with a detachable keyboard are commonly marketed as laptops or as having a laptop mode, they typically have a clam shell form factor, with the screen attached on the inside of the upper lid and the keyboard mounted on the inside of the lower lid. Laptops are suited for mobile use because they can be folded shut for traveling. Its name originates from the fact that it was deemed practical to use while sitting on a person's lap. Laptops are now utilized in a wide range of situations, including at work, in schools, for gaming, web browsing, personal multimedia, and general home computer use.</p>
+			</div>
+			<div class="Bcontainer2">
+				<p class="Btitle2">-----LAPTOP TRIVIA OF THE DAY-----</p>
+				<p class="Bdescription2">The first-ever laptop introduced in the market was the <br>
+		 		<em>OSBORNE 1</em>. It has a 5 by 5 inches screen and a key-<br>board. It costs about 1795 USD. Lee Felsenstein was<br> the man behind the first-ever laptop.</p>
+				<a href="https://oldcomputers.net/osborne-1.html" target="_blank">
+				<img src= "{% static 'images/laptoptrivia1.webp' %}" title="OSBORNE 1" width="120" height="110" class="Bimg2">
+				</a>	
+			</div>
+			<div class="Bcontainer3">
+				<p class="Bdescription3">TO REVIEW THE LATEST<br> LAPTOP JUST CHOOSE<br> ON THE OPTIONS ON<br> THE LEFT SIDE!</p>
+			</div>
+			<div class="Bcontainer4">
+				<h1 class="Btitle5"><center>TOP 3 LAPTOP&nbsp;BRANDS</center></h1>
+				<ol class="Blist1">
+				<li class="Blist1margin"><a href="{% url 'laptopAsus/'%}" class="Boptions2" title="ASUS LAPTOP">ASUS</a></li>
+				<li class="Blist1margin"><a href="{% url 'laptopLenovo/'%}" class="Boptions2" title="LENOVO LAPTOP">LENOVO</a></li>
+				<li class="Blist1margin"><a href="{% url 'laptopDell/'%}" class="Boptions2" title="DELL LAPTOP">DELL</a></li>
+				</ol>
+			</div>
+			<div class="Bcontainer6">
+				<center>
+				<iframe class="Bvid1" width="180" height="110" src="https://www.youtube.com/embed/6LIv2ocJXRk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</center>	
+			</div>
+		</div>
+	</body>
+{%endblock%}

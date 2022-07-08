@@ -1,0 +1,45 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+		<div>
+			<center>
+				<p class="Btitle1">MONITOR</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Bline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+		<div class="grid-containerB">
+			<div class="Bcontainer1">
+				<img src= "{% static 'images/monitor.webp' %}" title="Monitor" width="150" height="150" class="Bimg1b">
+				<p class="Bdescription1">
+				<b>MONITOR</b> is an output device that display texts and images. It is usually containing a visual display, wirings, casing, and a power supply. A monitor has an <acronym title="LIQUID CRYSTAL DISPLAY">LCD</acronym> with an <acronym title="LIGHT-EMITTING DIODE">LED</acronym> or CCFL. The old monitors use CRT or even Plasma. Plasma monitors are now phased out in the market because producing <acronym title="LIQUID CRYSTAL DISPLAY">LCD</acronym> is cheaper. Monitors can function using <acronym title="HIGH DEFINITION MULTIMEDIA INTERFACE">HDMI</acronym>, <acronym title="VIDEO GRAPHICS ARRAY">VGA</acronym>, USB-C, etc. Those cables help the system unit or laptop project its contents to the monitor. For modern computer monitors the function of it is just to display, it doesn’t have speakers nor <acronym title="TELEVISION">TV</acronym> adapters.</p>
+			</div>
+			<div class="Bcontainer2">
+				<p class="Btitle2">-----MONITOR TRIVIA OF THE DAY-----</p>
+				<p class="Bdescription2">In March 1, 1973 the first monitor was introduced.<br> The Xerox Alto Computer included the first computer monitor.<br> It used cathode ray tube technology and projects<br> black and white display only.</p>
+				<a href="https://www.computerhistory.org/revolution/input-output/14/347" target="_blank">
+				<img src= "{% static 'images/monitortrivia1.webp' %}" title="Xerox Alto Computer" width="100" height="110" class="Bimg2b">
+				</a>	
+			</div>
+			<div class="Bcontainer3">
+				<p class="Bdescription3">TO REVIEW THE LATEST<br> MONITORS JUST CHOOSE<br> ON THE OPTIONS ON<br> THE LEFT SIDE!</p>
+			</div>
+			<div class="Bcontainer4">
+				<h1 class="Btitle5"><center>TOP 3 MONITOR&nbsp;BRANDS</center></h1>
+				<ol class="Blist1">
+				<li class="Blist1margin"><a href="{% url 'monitorNVision/'%}" class="Boptions2" title="NVision Monitors">NVISION</a></li>
+				<li class="Blist1margin"><a href="{% url 'monitorAsus/'%}" class="Boptions2" title="Asus Monitors">ASUS</a></li>
+				<li class="Blist1margin"><a href="{% url 'monitorAcer/'%}" class="Boptions2" title="Acer Monitors">ACER</a></li>
+				</ol>
+			</div>
+			<div class="Bcontainer6">
+				<center>
+				<iframe class="Bvid1" width="180" height="110" src="https://www.youtube.com/embed/uyLDA9QT8EY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</center>	
+			</div>
+		</div>
+	</body>
+{%endblock%}

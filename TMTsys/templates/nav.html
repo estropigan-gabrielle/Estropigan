@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+                <link rel="stylesheet" type="text/css" href="{% static 'CSS/TMTK2.css' %}">
+		<meta charset="UTF-8" />
+		<meta charset="utf-8" name="viewport" content= "width=device-width, user-scalable=no" />
+		<title>TMTK</title>
+	</head>
+
+	<body class="bodyBG">
+		<div>
+		      <img src = "{% static 'images/logo.webp' %}" class="Dimg5" width="300" height = "100"> 
+		</div>
+		<div class="Dcontainer1">
+			<center>
+			<a href="{% url 'homepage/'%}" class="Doptions1" title="HOME">HOME</a>
+			<a href="{% url 'laptop/'%}" class="Doptions1" title="LAPTOP">LAPTOP</a>
+			<a href="{% url 'monitor/'%}" class="Doptions1"title="MONITOR">MONITOR</a>
+			<a href="{% url 'mouse/'%}" class="Doptions1" title="MOUSE">MOUSE</a>
+			<a href="{% url 'keyboard/'%}" class="Doptions1" title="KEYBOARD">KEYBOARD</a>
+                        <a href="{% url 'contact/'%}" class="Doptions1" title="CHECKOUT">CONTACT US</a>
+			 <a href="{% url 'checkout1/'%}" class="Doptions1" title="CHECKOUT">CHECKOUT</a>
+			</center>
+                </div>
+
+                {% block content %}
+
+        {% endblock %}
+        <div>
+                        <p class="line2" style="margin-top: -10px;">______________________________________________________________________________________________________________</p>
+                </div>
+                <div>
+                        <h4 class="footer1"><center>Powered by gstrpgn</center></h4>
+</body>
+</html

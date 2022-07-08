@@ -1,0 +1,255 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+		<script type="text/javascript">
+			function showModal(){
+		    console.log('Show Modal');
+		    document.querySelector('#modal-review').style.display = 'flex';
+			}
+
+			function hideModal(){
+			    console.log('Hide Modal');
+			    document.querySelector('#modal-review').style.display = 'none';
+			}
+
+			function showModalSubmit(){
+			    console.log('Show Modal Submit');
+			    document.querySelector('#modal-submit').style.display = 'flex';
+			}
+
+			function hideModalSubmit(){
+			    console.log('Hide Modal Submit');
+			    document.querySelector('#modal-submit').style.display = 'none';
+			    document.getElementById("form").reset();
+			}
+		</script>
+	</head>
+
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Etitle1">HOW'S OUR REVIEW?</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Eline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+
+		<div class="grid-containerE">
+			<div class="Econtainer2">
+
+			</div>
+			
+			<div class="Econtainer4">
+				<center>
+				<form id="form" onsubmit="showModalSubmit();return false" >
+					<fieldset class="Efieldset1">
+						<legend class="ElegendTitle">PERSONAL INFORMATION</legend>
+
+						<label for="first_name" class="Eoptions2">NAME:</label>	
+			        	<input type ="text" name="name" placeholder="  Your Name" required="" class="Etextfields1">
+
+			        	<label for="email_address" class="Eoptions2"> E-MAIL ADDRESS: </label>
+			        	<input type ="text" name="email_address" placeholder="  Your E-mail Address" required="" class="Etextfields1">
+
+						<label for="cellphone_number" class="Eoptions2"> CONTACT #:</label>
+			        	<input type ="text" name="cellphone_number" placeholder="  Your Cellphone Number" required="" class="Etextfields1">
+                                        </fieldset>
+
+					<fieldset class="Efieldset2">
+						<legend class="ElegendTitle">QUESTIONS</legend>
+							<label for="cellphone_number" class="Eoptions2">SELECT THE ITEM:</label>
+							<select name="dropdown" class="Etextfields1" required>
+					        	<option value ="">Please Select</option>
+					        	<option value ="asusLaptop"disabled>~LAPTOP~</option>	
+                                                        <option value ="asusLaptop" disabled="">~ASUS LAPTOP~</option>
+                                                        <option value ="asusL1">VIVOBOOK PRO 16X OLED</option>
+                                                        <option value ="asusL2">VIVOBOOK S15 S532</option>
+                                                        <option value ="asusL3">VIVOBOOK 17 X712</option>
+                                                        <option value ="asusL4">VIVOBOOK FLIP 14 TM420</option>
+                                                        <option value ="asusL5">VIVOBOOK GO 15 (E510)</option>
+                                                        <option value ="lenovoLaptop" disabled="">~LENOVO LAPTOP~</option>
+					            <option value ="lenovoL1">Lenovo ThinkPad X1 Fold</option>
+					            <option value ="lenovoL2">Lenovo IdeaPad 3i</option>
+					            <option value ="lenovoL3">Lenovo IdeaPad Slim 5 Pro</option>
+					            <option value ="lenovoL4">Lenovo Legion 5i Pro</option>
+					            <option value ="lenovoL5">Lenovo Yoga 7 Slim Carbon</option>
+
+					            <option value ="dellLaptop" disabled="">~DELL LAPTOP~</option>
+					            <option value ="dellL1">Dell Inspiron 14 (5410)</option>
+					            <option value ="dellL2">Dell Inspiron 15 5000</option>
+					            <option value ="dellL3">Dell Vostro 3568</option>
+					            <option value ="dellL4">Dell XPS 17 (9710)</option>
+					            <option value ="dellL5">Dell G15 Ryzen Edition</option>
+
+
+					            <option value ="Monitor"disabled>~MONITOR~</option>	
+
+					            <option value ="nvisionMonitor" disabled="">~NVISION MONITOR~</option>
+					            <option value ="nvisionMON1">Nvision IP24V1</option>
+					            <option value ="nvisionMON2">Nvision IP22V1 21.5"</option>
+					            <option value ="nvisionMON3">Nvision GT27R18V3 27"</option>
+					            <option value ="nvisionMON4">Nvision GT24R18V3 24" </option>
+					            <option value ="nvisionMON5">Nvision N190HD 19"</option>
+
+								<option value ="asusMonitor" disabled="">~ASUS MONITOR~</option>
+					            <option value ="asusMON1">Asus VG249Q1R 23.8"</option>
+					            <option value ="asusMON2">Asus XG27WQ </option>
+					            <option value ="asusMON3">Asus XG438Q</option>
+					            <option value ="asusMON4">Asus VG32VQ</option>
+					            <option value ="asusMON5">Asus PG32UQX</option>
+
+					            <option value ="acerMonitor" disabled="">~ACER MONITOR~</option>
+					            <option value ="acerMON1">Nitro EG220QPhbipx</option>
+					            <option value ="acerMON2">AOpen 22CV1Q</option>
+					            <option value ="acerMON3">Nitro VG240Y Svbmiipx</option>
+					            <option value ="acerMON4">Nitro VG270 Sbmiipx</option>
+					            <option value ="acerMON5">AOpen 27HC5R Z</option>
+
+					            <option value ="Mouse"disabled>~MOUSE~</option>
+
+					            <option value ="razerMOUSE" disabled="">~RAZER MOUSE~</option>
+					            <option value ="razerMOU1">Razer Viper 8KHz</option>
+					            <option value ="razerMOU2">Razer Basilisk X HyperSpeed</option>
+					            <option value ="razerMOU3">Razer Viper Ultimate</option>
+					            <option value ="razerMOU4">Razer DeathAdder V2 Pro</option>
+					            <option value ="razerMOU5">Razer Basilisk Chroma</option>
+
+					            <option value ="logitechMOUSE" disabled="">~LOGITECH MOUSE~</option>
+					            <option value ="logiMOU1">Logitech MX Master 2S</option>
+					            <option value ="logiMOU2">Logitech G903 Lightspeed</option>
+					            <option value ="logiMOU3">Logitech G304 Lightspeed</option>
+					            <option value ="logiMOU4">Logitech G102 Prodigy</option>
+					            <option value ="logiMOU5">Logitech M185</option>
+
+
+					            <option value ="steelMOUSE" disabled="">~STEEL SERIES MOUSE~</option>
+					            <option value ="steelMOU1">SteelSeries Rival 710</option>
+					            <option value ="steelMOU2">SteelSeries Rival 600</option>
+					            <option value ="steelMOU3">SteelSeries Rival 310</option>
+					            <option value ="steelMOU4">SteelSeries 62527</option>
+					            <option value ="steelMOU5">SteelSeries Rival 3 62513</option>
+
+
+					            <option value ="Keyboard"disabled>~KEYBOARD~</option>
+
+					            <option value ="logiKEYBOARD" disabled="">~LOGITECH KEYBOARD~</option>
+					            <option value ="logiKEY1">Logitech K120</option>
+					            <option value ="logiKEY2">Logitech K480</option>
+					            <option value ="logiKEY3">Logitech K270</option>
+					            <option value ="logiKEY4">Logitech K380</option>
+					            <option value ="logiKEY5">Logitech MK240</option>
+
+
+					            <option value ="razerKEYBOARD" disabled="">~RAZER KEYBOARD~</option>
+					            <option value ="razerKEY1">Razer Huntsman Mini Linear</option>
+					            <option value ="razerKEY2">Razer Huntsman Mini Clicky</option>
+					            <option value ="razerKEY3">Razer BlackWidow V3 Mech</option>
+					            <option value ="razerKEY4">Razer Blackwidow V3, Tenkeyless</option>
+					            <option value ="razerKEY5">Razer Huntsman Quartz </option>
+
+
+
+					       		<option value ="corsairKEYBOARD" disabled="">~CORSAIR KEYBOARD~</option>
+					            <option value ="corKEY1">Corsair K63</option>
+					            <option value ="corKEY2">Corsair K57</option>
+					            <option value ="corKEY3">Corsair K65</option>
+					            <option value ="corKEY4">Corsair K60 Pro</option>
+					            <option value ="corKEY5">Corsair K55</option>
+					        </select>
+					        <center>
+								<p class="Eoptions2">Rate the questions and be guided by this 
+								Legend: 
+								<u>[5]</u>-<b>Very Satisfactory</b>  
+								<u>[4]</u>-<b>Satisfactory</b>  
+								<u>[3]</u>-<b>Good</b>  
+								<u>[2]</u>-<b>Fair</b>  
+								<u>[1]</u>-<b>Poor</b>
+								</p>
+					        </center>
+					    <center>    
+							<fieldset class="Efieldset4">
+								<legend class="ElegendTitle2">Does the review and clips serves its purpose to give you information?</legend>
+								<input class="Eradio1"type="radio" name="feedback1" value="FEEDBACK" >
+								<label for="FEEDBACK" class="Eoptions3">5</label>
+
+								<input class="Eradio1"type="radio" name="feedback1" value="FEEDBACK" >
+								<label for="FEEDBACK" class="Eoptions3">4</label>
+
+								<input class="Eradio1"type="radio" name="feedback1" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">3</label>
+
+								<input class="Eradio1"type="radio" name="feedback1" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">2</label>
+
+								<input class="Eradio1"type="radio" name="feedback1" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">1</label>
+							</fieldset>
+
+							<fieldset class="Efieldset4">
+								<legend class="ElegendTitle2">Does the information and downloadable specifications gave you more information?</legend>
+
+								<input class="Eradio1"type="radio" name="feedback2" value="FEEDBACK" required >
+								<label for="FEEDBACK" class="Eoptions3">5</label>
+
+								<input class="Eradio1"type="radio" name="feedback2" value="FEEDBACK" >
+								<label for="FEEDBACK" class="Eoptions3">4</label>
+
+								<input class="Eradio1"type="radio" name="feedback2" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">3</label>
+
+								<input class="Eradio1"type="radio" name="feedback2" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">2</label>
+
+								<input class="Eradio1"type="radio" name="feedback2" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">1</label>
+							</fieldset>
+
+							<fieldset class="Efieldset4">
+
+								<legend class="ElegendTitle2">Does our review helped you to decide what gadget you will buy?</legend>
+
+								<input class="Eradio1"type="radio" name="feedback3" value="FEEDBACK" required>
+								<label for="FEEDBACK" class="Eoptions3">5</label>
+
+								<input class="Eradio1"type="radio" name="feedback3" value="FEEDBACK">
+								<label for="FEEDBACK" class="Eoptions3">4</label>
+
+								<input class="Eradio1"type="radio" name="feedback3" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">3</label>
+
+								<input class="Eradio1"type="radio" name="feedback3" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">2</label>
+
+								<input class="Eradio1"type="radio" name="feedback3" value="FEEDBACK" onclick="showModal()">
+								<label for="FEEDBACK" class="Eoptions3">1</label>
+							</fieldset>
+						</center>
+						<center>						
+							<input type="submit" name="submit" value="Submit" class="Ebuttons1"/> 
+						</center>
+		        	</fieldset>
+                    </form>
+                    </center>
+
+			</div>
+			<div class="bg-modal" id="modal-submit">
+				<div class="modal-content-submit">
+					<h3>Thanks! We appreciate your honest feedback.</h3>
+					<div class="close-modal" onclick="hideModalSubmit()">+</div>
+				</div>
+			</div>
+                                
+                        
+            </div>
+			<div class="bg-modal" id="modal-review">
+				<div class="modal-content">
+					<h3>Are you sure with your answer? Please review again our items.</h3>
+					<button class="Ebuttons1 button-modal" onclick="hideModal()">Ok</button>
+				<div class="close-modal" onclick="hideModal()">+</div>
+				</div>
+			</div>
+	</body>
+{%endblock%}

@@ -1,0 +1,166 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+		<script type="text/javascript">
+			function showCompare(price){
+			    console.log('Show Modal');
+			    document.querySelector('#modal-compare').style.display = 'flex';
+			    document.querySelector('#price').value = price;
+			}
+
+			function showModal(){
+			}
+
+				function hideModal(){
+				    console.log('Hide Modal');
+				    document.querySelector('#modal-compare').style.display = 'none';
+			}
+
+			function comparePrice(){
+			    let price = document.querySelector('#price').value;
+			    let cash = document.querySelector('#cash').value;
+			    console.log(price);
+			    console.log(cash);
+			    console.log(Number(cash) >= Number(price));
+			    console.log(Number(price) - Number(cash));
+
+			    if (Number(cash) == Number(price)){
+			    	document.querySelector('#message-equal').style.display = 'flex';
+			    	document.querySelector('#message-enough').style.display = 'none';
+			        document.querySelector('#message-short').style.display = 'none';
+			        document.querySelector('#equal').innerHTML = 'Your budget is enough!';
+			    }
+			    else if(Number(cash) >= Number(price)){
+			        document.querySelector('#message-enough').style.display = 'flex';
+			        document.querySelector('#message-short').style.display = 'none';
+			        document.querySelector('#message-equal').style.display = 'none';
+			        document.querySelector('#enough').innerHTML = 'You have enough budget! \nYou have an extra ₱' + [(Number(cash)).toString()-Number(price)]+'\nCheck and review more items!';
+			    }
+
+			    else{
+			        document.querySelector('#message-short').style.display = 'flex';
+			        document.querySelector('#message-enough').style.display = 'none';
+			        document.querySelector('#message-equal').style.display = 'none';
+			        document.querySelector('#short').innerHTML = 'You don\'t have enough budget! \nYou need additional ₱' +  (Number(price) - Number(cash)).toString();
+			    }
+			}	
+		</script>
+	</head>
+
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Dtitle1">STEELSERIES RIVAL 3 62513 GAMING MOUSE BLACK</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Dline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+
+		<div class="grid-containerD">
+			<div class="Dcontainer2">
+				<a class="Doptions2A" href="{% url 'mouseSteel/'%}">BACK</a>
+			</div>
+			
+			<div class="Dcontainer3">
+
+				<button type="button" onclick="showCompare(2050)"class="Ebuttons2">Compare The Price!</button>
+
+				<div class="bg-modal" id="modal-compare">
+					<div class="modal-compare">
+						<form>
+                                                        <h3>PRICE VS. BUDGET</h3>
+                                                        <table>
+                                                                <tr>
+                                                                        <td>
+                                                                                Unit Price: 
+                                                                        </td>
+                                                                        <td>
+                                                                                <input type="text" name="price" value="" id="price" disabled>
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>
+                                                                                Budget:
+                                                                        </td>
+                                                                        <td>
+                                                                                <input type="number" name="cash" value="" id="cash">
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                        <input type="button" class="Ebuttons1 button-modal" onclick="comparePrice()" value="Compare">
+                                                        <center>
+                                                                <div class="compare-short" id="message-short">
+                                                                        <p id="short"></p>
+                                                                </div>
+                                                                <div class="compare-enough" id="message-enough">
+                                                                        <p id="enough"></p>
+                                                                </div>
+                                                                <div class="compare-equal" id="message-equal">
+                                                                        <p id="equal"></p>
+                                                                </div>
+                                                        </center>
+                                                        <div class="close-modal" onclick="hideModal()">+</div>
+                                                </form>
+					</div>
+				</div>
+				
+				<img src="{% static 'images/steelMOU5.webp' %}" class="Dimg1"width="200px" height="150px" title="STEELSERIES RIVAL 3 62513 GAMING MOUSE BLACK | Photo Credits: www.steelseries.com">
+			</div>
+			<div class="Dcontainer4">
+                                        <table class="Ddescription1">
+                                                <tr>
+                                                        <td class="Ddescription1color"><b>GENERAL&nbsp;INFORMATION</b></td>
+                                                        <td></td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">NAME:</td>
+                                                        <td>STEELSERIES RIVAL 3 62513 GAMING MOUSE BLACK</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">TMTK RATINGS:</td>
+                                                        <td>5 / 5</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">RELEASE DATE:</td>
+                                                        <td>January 21, 2020</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">PRICE:</td>
+                                                        <td>2,050 PHP</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">SENSITIVITY:</td>
+                                                        <td>8500 DPI</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">SPEED:</td>
+                                                        <td>300 IPS</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">Download the Full Specs:</td>
+                                                        <td><a href="pdf/steelMOU5.pdf" class="Ddescription1" target="_blank">SteelSeries Mouse 5</a></td>
+                                                </tr>
+                                        </table>
+                                        
+                                        
+                                </div>
+                                <div class="Dcontainer5">
+                                        <p class="Ddescription2">This 2020 release by SteelSeries also have a TrueMove Core that aims to have an accurate speed and smooth movement of the mouse pointer. This mouse has a 8500 DPI smoothness and 300 IPS speed. Just like the other SteelSeries mice this mouse has an average of 60 million clicks as well. Also, the aesthetic part here is its RGB lighting. It has 3 RGB zones that can be controlled independently. This mouse has 6 buttons which is customizable as well. This mouse is recommended for online class aDnd content creation because of its accuracy. </p>	
+                                </div>
+                                <div class="Dcontainer6">
+                                        <iframe class="Dvid1" width="300" height="110" src="https://www.youtube.com/embed/b-IHxf5Wvi4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+        
+                                <div class="Dcontainer7">
+                                        <br>
+                                        <center>
+                                        <a class="Ddescription3" href="{% url 'feedback/'%}">DID YOU LIKE OUR REVIEW? PLEASE SEND US A FEEDBACK!</a>	
+                                        </center>			
+                                </div>
+                                
+		</div>
+	</body>
+{%endblock%}

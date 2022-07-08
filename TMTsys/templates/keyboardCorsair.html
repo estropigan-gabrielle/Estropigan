@@ -1,0 +1,180 @@
+{% extends 'nav.html'%}
+{% load static %}
+{% block content %}
+		<script type="text/javascript">
+			let logitechKeyboardList = [
+			    { name: 'Logitech K120', url: {% url 'logiKEY1/'%}, image: 'logiKEY1.webp', rating: '3', price: 1320, release: new Date('2017-08-03'), creditTag: 'www.logitech.com'},
+			    { name: 'Logitech K480', url: {% url 'logiKEY2/'%}, image: 'logiKEY2.webp', rating: '4', price: 1795, release: new Date('2015-07-14'), creditTag: 'www.logitech.com'},
+			    { name: 'Logitech K270', url: {% url 'logiKEY3/'%}, image: 'logiKEY3.webp', rating: '3.5', price: 995, release: new Date('2018-08-07'), creditTag: 'www.logitech.com'},
+			    { name: 'Logitech K380', url: {% url 'logiKEY4/'%}, image: 'logiKEY4.webp', rating: '4', price: 1445, release: new Date('2015-09-28'), creditTag: 'www.logitech.com'},
+			    { name: 'Logitech MK240', url: {% url 'logiKEY5/'%}, image: 'logiKEY5.webp', rating: '5', price: 1095, release: new Date('2016-07-09'), creditTag: 'www.logitech.com'}
+			];
+
+			let razerKeyboardList = [
+			    { name: 'Razer Huntsman Mini Linear', url: {% url 'razerKEY1/'%}, image: 'razerKEY1.webp', rating: '4', price: 6499, release: new Date('2020-07-04'), creditTag: 'www.razer.com'},
+			    { name: 'Razer Huntsman Mini Clicky', url: {% url 'razerKEY2/'%}, image: 'razerKEY2.webp', rating: '4.5', price: 6995, release: new Date('2020-07-14'), creditTag: 'www.razer.com'},
+			    { name: 'Razer BlackWidow V3 Mech', url: {% url 'razerKEY3/'%}, image: 'razerKEY3.webp', rating: '4', price: 6995, release: new Date('2020-10-06'), creditTag: 'www.razer.com'},
+			    { name: 'Razer Blackwidow V3, Tenkeyless', url: {% url 'razerKEY4/'%}, image: 'razerKEY4.webp', rating: '5', price: 6995, release: new Date('2020-10-06'), creditTag: 'www.razer.com'},
+			    { name: 'Razer Huntsman Quartz ', url: {% url 'razerKEY5/'%}, image: 'razerKEY5.webp', rating: '5', price: 8100, release: new Date('2018-01-29'), creditTag: 'www.razer.com'}
+			];
+
+			let corsairKeyboardList = [
+			    { name: 'Corsair K63', url: {% url 'corKEY1/'%}, image: 'corKEY1.webp', rating: '4.5', price: 4995, release: new Date('2018-04-05'), creditTag: 'www.corsair.com'},
+			    { name: 'Corsair K57', url: {% url 'corKEY2/'%}, image: 'corKEY2.webp', rating: '4', price: 6100, release: new Date('2019-08-20'), creditTag: 'www.corsair.com'},
+			    { name: 'Corsair K65', url: {% url 'corKEY3/'%}, image: 'corKEY3.webp', rating: '5', price: 5995, release: new Date('2021-04-07'), creditTag: 'www.corsair.com'},
+			    { name: 'Corsair K60 Pro', url: {% url 'corKEY4/'%}, image: 'corKEY4.webp', rating: '4', price: 4550, release: new Date('2020-10-13'), creditTag: 'www.corsair.com'},
+			    { name: 'Corsair K55', url: {% url 'corKEY5/'%}, image: 'corKEY5.webp', rating: '3.5', price: 3200, release: new Date('2016-11-22'), creditTag: 'www.corsair.com'}
+			];
+
+			let options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+
+			function sort(brand, field, type) {
+
+			    let list;
+
+			    if(brand == 'logitech'){
+			        list = logitechKeyboardList;
+			    }else if(brand == 'razer'){
+			        list = razerKeyboardList;
+			    }else if(brand == 'corsair'){
+			        list = corsairKeyboardList;
+			    }
+
+			    if(field == 'rating'){   
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.rating - b.rating;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.rating - a.rating;
+			                });
+			        }
+			    } else if (field == 'price'){
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.price - b.price;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.price - a.price;
+			                });
+			        }
+			    } else if (field == 'release'){
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.release - b.release;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.release - a.release;
+			                });
+			        }
+			    }
+
+			    document.getElementById('container3').innerHTML = '<a href="'+ list[0].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[0].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[0].name +' | Photo Credits: '+ list[0].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[0].url +'">'+ list[0].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[0].rating +' / 5<br>Price: '+ list[0].price.toLocaleString() +' PHP<br>Release: '+ list[0].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container4').innerHTML = '<a href="'+ list[1].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[1].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[1].name +' | Photo Credits: '+ list[1].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[1].url +'">'+ list[1].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[1].rating +' / 5<br>Price: '+ list[1].price.toLocaleString() +' PHP<br>Release: '+ list[1].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container5').innerHTML = '<a href="'+ list[2].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[2].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[2].name +' | Photo Credits: '+ list[2].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[2].url +'">'+ list[2].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[2].rating +' / 5<br>Price: '+ list[2].price.toLocaleString() +' PHP<br>Release: '+ list[2].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container6').innerHTML = '<a href="'+ list[3].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[3].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[3].name +' | Photo Credits: '+ list[3].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[3].url +'">'+ list[3].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[3].rating +' / 5<br>Price: '+ list[3].price.toLocaleString() +' PHP<br>Release: '+ list[3].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container7').innerHTML = '<a href="'+ list[4].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[4].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[4].name +' | Photo Credits: '+ list[4].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[4].url +'">'+ list[4].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[4].rating +' / 5<br>Price: '+ list[4].price.toLocaleString() +' PHP<br>Release: '+ list[4].release.toLocaleDateString("en-US", options) +'</p>';
+
+			}
+
+		</script>
+	</head>
+
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Ctitle1">CORSAIR KEYBOARDS</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Cline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+		<div class="grid-containerC">
+			<div class="Ccontainer2">
+				<form>
+					<a class="Coptions2A" href="{% url 'keyboard/' %}">BACK</a>
+					<a class="Coptions2B"></a>
+					<a class="Coptions2C">SORT BY PRICE:</a>
+					<input type="button" class="sort-button" onclick="sort('corsair', 'price', 'desc')" title="HIGH TO LOW" value="High to Low">
+					<a class="Coptions2C">|</a>
+					<input type="button" class="sort-button" onclick="sort('corsair', 'price', 'asc')" title="LOW TO HIGH" value="Low to High">
+					<a class="Coptions2C">SORT BY RELEASE DATE:</a>
+					<input type="button" class="sort-button" onclick="sort('corsair', 'release', 'desc')" title="RECENT TO OLDEST" value="Latest to Oldest">
+					<a class="Coptions2C">|</a>
+					<input type="button" class="sort-button" onclick="sort('corsair', 'release', 'asc')" title="OLDEST TO RECENT" value="Oldest to Latest">
+				</form>
+			</div>
+			
+			<div class="Ccontainer3" id="container3">
+				<a href="{% url 'corKEY1/' %}">
+				<img src="{% static 'images/corKEY1.webp' %}" class="Cimg1"width="180px" height="130px" title="Logitech K120 | Photo Credits: www.logitech.com">
+				</a>
+				<a class="Ctitle2" href="corKEY1.html">Corsair K63</a>
+				<p class="CKdescription1">TMTK Ratings: 4.5 / 5<br>Price: 4,995 PHP<br>Release: April 5, 2018</p>
+			</div>
+			<div class="Ccontainer4" id="container4">
+				<a href="{% url 'corKEY2/' %}">
+				<img src="{% static 'images/corKEY2.webp' %}" class="Cimg1"width="220px" height="130px" title="Logitech K480 | Photo Credits: www.logitech.com">
+				</a>
+				<a class="Ctitle2" href="corKEY2.html">Corsair K57</a>
+				<p class="CKdescription1">TMTK Ratings: 4 / 5<br>Price: 6,100 PHP<br>Release: August 20, 2019</p>
+			</div>
+			<div class="Ccontainer5" id="container5">
+				<a href="{% url 'corKEY3/' %}">
+				<img src="{% static 'images/corKEY3.webp' %}" class="Cimg1"width="150px" height="130px" title="Logitech K270 | Photo Credits: www.logitech.com">
+				</a>
+				<a class="Ctitle2" href="corKEY3.html">Corsair K65</a>
+				<p class="CKdescription1">TMTK Ratings: 5 / 5<br>Price: 5,995 PHP<br>Release: April 7, 2021</p>							
+			</div>
+			<div class="Ccontainer6" id="container6">
+				<a href="{% url 'corKEY4/' %}">
+				<img src="{% static 'images/corKEY4.webp' %}" class="Cimg1"width="150px" height="130px" title="Logitech K380 | Photo Credits: www.logitech.com">
+				</a>
+				<a class="Ctitle2" href="corKEY4.html">Corsair K60 Pro</a>
+				<p class="CKdescription1">TMTK Ratings: 4 / 5<br>Price: 4,550 PHP<br>Release: October 13, 2020</p>
+			</div>
+			<div class="Ccontainer7" id="container7">
+				<a href="{% url 'corKEY5/' %}">
+				<img src="{% static 'images/corKEY5.webp' %}" class="Cimg1"width="150px" height="130px" title="Logitech MK240 | Photo Credits: www.logitech.com">
+				</a>
+				<a class="Ctitle2" href="corKEY5.html">Corsair K55</a>
+				<p class="CKdescription1">TMTK Ratings: 3.5 / 5<br>Price: 3,200 PHP<br>Release: November 22, 2016</p>
+			</div>
+			<div class="Ccontainer8">
+			</div>
+		</div>
+
+		<div>
+	</body>
+{%endblock%}
+

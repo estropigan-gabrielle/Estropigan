@@ -1,0 +1,198 @@
+{% extends 'nav.html'%}
+{% load static %}
+{% block content %}
+		<script type="text/javascript">
+			let val = 0;
+			let progress = new Set();
+			window.onload = function exampleFunction() {
+			  
+			    let inputs = document.forms["contactForm"].getElementsByTagName("input");
+
+			    for (i = 0; i < inputs.length; i++) {
+
+			        // CHECK THE ELEMENT TYPE.
+			        if (inputs[i].type == 'text') {
+			            console.log('Value: ' + inputs[i].value);
+			        }
+
+			    }
+			    
+			    console.log(inputs);
+			}
+
+			function resetForm() {
+			    val = 0;
+			    progress = new Set();
+			    document.getElementById('progress').value = val;
+			}
+
+			function updateProgressBarRadio(input){
+			    console.log(progress);
+			    if(progress.has(input)){
+			        return;
+			    }
+			    progress.add(input);
+			    val = val + 10;
+
+			    document.getElementById('progress').value = val;
+
+			}
+
+			function updateProgressBarText(input, text){
+			    console.log(progress);
+			    if(progress.has(input) && text.length > 0){
+			        return;
+			    }else if (!progress.has(input)  && text.length > 0){
+			        val = val + 10;
+			        progress.add(input);
+			        document.getElementById('progress').value = val;
+			    }else{
+			        console.log('delete ' + input)
+			        val = val - 10;
+			        progress.delete(input);
+			        document.getElementById('progress').value = val;
+			    }
+			}
+
+			function updateProgressBarSelect(input, text){
+			    console.log(progress);
+			    if(progress.has(input) && text !== 'DEFAULT'){
+			        return;
+			    }else if (!progress.has(input)  && text !== 'DEFAULT'){
+			        val = val + 10;
+			        progress.add(input);
+			        document.getElementById('progress').value = val;
+			    }else{
+			        console.log('delete ' + input)
+			        val = val - 10;
+			        progress.delete(input);
+			        document.getElementById('progress').value = val;
+			    }
+			}
+
+			function sendEmail(inquiry, firstName, lastName, age, email, phone, org, orgName, description,file){
+			    var to = email;
+			    var cc = "";
+			    var bcc = "";
+			    
+			    // var con = document.getElementById('selection');
+			    // var text = con.options[con.selectedIndex].text;
+
+			    var body =
+			    "\nName: \t" +
+			    firstName + " " + lastName + 
+			    " " +
+			    "\nAge: \t" +
+			    age+
+			    " " +
+			    "\nMobile Number: \t" +
+			    phone +
+			    " " +
+			    "\nOrganization: \t" +
+			    org + " - " + orgName +
+			    " " +
+			    "\nMessage: \t" +
+			    description;
+
+			    var info = 
+			    "mailto:" +
+			    to +
+			    "?cc=" +
+			    cc +
+			    "      " +
+			    bcc +
+			    "&subject=" +
+			    escape(inquiry) +
+			    "&body="+
+			    escape(body)+
+			    "&attachment="+
+			    escape(file);
+			    window.location = info;
+
+			}
+		</script>
+	</head>
+
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Etitle1">GET IN TOUCH</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Eline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+
+		<div class="grid-containerE">
+			<div class="Econtainer2">
+
+			</div>
+			
+			<div class="Econtainer3">
+			<form name="contactForm" action = "#" method = "post" enctype="multipart/form-data" onsubmit="sendEmail(favs.value,first_name.value, last_name.value, age.value, email_address.value, cellphone_number.value, org.value, organization_name.value, description.value,file.value)">
+				<fieldset class="Efieldset1">
+					<legend class="ElegendTitle">INQUIRY TYPE</legend>
+
+					<input type="radio" name="favs" value="INQUIRY" required onclick="updateProgressBarRadio('inquiry')">
+					<label for="INQUIRY" class="Eoptions3">INQUIRY</label>
+
+		        	<input type="radio" name="favs" value="SUGGESTION" onclick="updateProgressBarRadio('inquiry')">
+		        	<label for="SUGGESTION" class="Eoptions3">SUGGESTION</label>
+
+		        	<input type="radio" name="favs" value="QUESTIONS" onclick="updateProgressBarRadio('inquiry')">
+		        	<label for="QUESTION" class="Eoptions3">QUESTION</label>
+        		</fieldset> <br>
+
+				<fieldset class="Efieldset2">
+					<legend class="ElegendTitle">PERSONAL INFORMATION</legend>
+
+					<label for="first_name" class="Eoptions2">FIRST NAME:</label>	
+		        	<input type ="text" name="first_name" placeholder="  Your First Name" required="" class="Etextfields1" onfocusout="updateProgressBarText('firstName', this.value)">
+
+		        	<label for="last_name" class="Eoptions2"> LAST NAME: </label>
+		        	<input type ="text" name="last_name" placeholder="  Your Last Name" required="" class="Etextfields1" onfocusout="updateProgressBarText('lastName', this.value)">
+
+		        	<label for="age" class="Eoptions2"> AGE: </label>
+		        	<input type ="text" name="age" placeholder="  Your Age" required="" class="Etextfields1" onfocusout="updateProgressBarText('age', this.value)"><br>
+
+		        	<label for="email_address" class="Eoptions2"> E-MAIL ADDRESS: </label>
+		        	<input type ="text" name="email_address" placeholder="  Your E-mail Address" required="" class="Etextfields1" onfocusout="updateProgressBarText('email', this.value)"> 
+
+		        	<label for="cellphone_number" class="Eoptions2"> CELLPHONE NUMBER: </label>
+		        	<input type ="text" name="cellphone_number" placeholder="  Your Cellphone Number" required="" class="Etextfields1" onfocusout="updateProgressBarText('phone', this.value)"><br>
+
+		        	<label for="org" class="Eoptions2">ORGANIZATION:</label>
+		        	<select name="org" required="" class="Etextfields1" onchange="updateProgressBarSelect('org', this.value)">
+		        	<option value ="DEFAULT" selected>-----------</option>	
+		            <option value ="OFFICE">OFFICE</option>
+		            <option value="SCHOOL/ UNIVERSITY">SCHOOL/ UNIVERSITY</option>
+		            <option value="ORGANIZATION">ORGANIZATION</option>
+		        	</select>
+
+		            <label for="organization_name" class="Eoptions2">NAME OF ORGANIZATION:</label>
+		        	<input type ="text" name="organization_name" placeholder="  Enter Name of Organization" required="" class="Etextfields1" onfocusout="updateProgressBarText('orgname', this.value)">
+
+	        	</fieldset><br>
+
+	        	<fieldset class="Efieldset3">
+	        		<legend class="ElegendTitle">INQUIRY DESCRIPTION</legend>
+	        		<textarea rows ="3" cols = "120" name="description" id="descrip" placeholder="Enter description here."required class="Etextfields2" maxlength="500" onfocusout="updateProgressBarText('desc', this.value)"></textarea>
+	        		<input type="file" name="file" id="file select" accept="pdf/*" value="" class="Ebuttons1">
+	        	</fieldset>
+
+
+
+		        <input type="checkbox" name="terms_conditions" class="Eoptions3">
+		        <label  class="Eoptions3">I agree to the <a href="pdf/terms.pdf" target="_blank">terms and conditions</a> of The Modern Tech Kid </label> <br><br>
+		        <button type="submit" name="submit" value="Submit" class="Ebuttons1">Submit</button> 
+				<button type="reset" name="reset" class="Ebuttons1" onclick="resetForm()">Reset</button>
+				<progress id="progress"value="0" max="90"></progress>
+				
+			</form>
+			</div>                        
+            </div>
+	</body>
+{%endblock%}
+

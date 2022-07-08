@@ -1,0 +1,177 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+		<script type="text/javascript">
+			let nvisionMonitorList = [
+			    { name: 'Nvision IP24V1', url: {% url 'nvisionMON1/'%}, image: 'nvisionMON1.webp', rating: '4', price: 6699 , release: new Date('2020-01-25'), creditTag: 'www.easypc.com.ph'},
+			    { name: 'Nvision IP22V1 21.5"', url: {% url 'nvisionMON2/'%}, image: 'nvisionMON2.webp', rating: '3.5', price: 3595 , release: new Date('2020-05-23'), creditTag: 'www.easypc.com.ph'},
+			    { name: 'Nvision GT27R18V3 27"', url: {% url 'nvisionMON3/'%}, image: 'nvisionMON3.webp', rating: '5', price: 10095 , release: new Date('2020-02-11'), creditTag: 'www.easypc.com.ph'},
+			    { name: 'Nvision GT24R18V3 24"', url: {% url 'nvisionMON4/'%}, image: 'nvisionMON4.webp', rating: '4', price: 7699 , release: new Date('2020-02-11'), creditTag: 'www.easypc.com.ph'},
+			    { name: 'Nvision N190HD 19"', url: {% url 'nvisionMON5/'%}, image: 'nvisionMON5.webp', rating: '3.5', price: 2495 , release: new Date('2021-02-06'), creditTag: 'www.easypc.com.ph'}
+			];
+
+			let asusMonitorList = [
+			    { name: 'Asus VG249Q1R 23.8"', url: {% url 'asusMON1/'%}, image: 'asusMON1.webp', rating: '5', price: 11995 , release: new Date('2020-09-15'), creditTag: 'www.asus.com'},
+			    { name: 'Asus XG27WQ ', url: {% url 'asusMON2/'%}, image: 'asusMON2.webp', rating: '5', price: 29740 , release: new Date('2020-03-28'), creditTag: 'www.asus.com'},
+			    { name: 'Asus XG438Q', url: {% url 'asusMON3/'%}, image: 'asusMON3.webp', rating: '5', price: 55995 , release: new Date('2019-09-27'), creditTag: 'www.asus.com'},
+			    { name: 'Asus VG32VQ', url: {% url 'asusMON4/'%}, image: 'asusMON4.webp', rating: '4.5', price: 29920 , release: new Date('2019-07-09'), creditTag: 'www.asus.com'},
+			    { name: 'Asus PG32UQX', url: {% url 'asusMON5/'%}, image: 'asusMON5.webp', rating: '5', price: 160080 , release: new Date('2021-05-28'), creditTag: 'www.asus.com'}
+			];
+
+			let acerMonitorList = [
+			    { name: 'Nitro EG220QPhbipx', url: {% url 'acerMON1/'%}, image: 'acerMON1.webp', rating: '4', price: 6299 , release: new Date('2020-06-11'), creditTag: 'www.acer.com'},
+			    { name: 'AOpen 22CV1Q', url: {% url 'acerMON2/'%}, image: 'acerMON2.webp', rating: '3.5', price: 7599 , release: new Date('2020-06-15'), creditTag: 'www.acer.com'},
+			    { name: 'Nitro VG240Y Svbmiipx', url: {% url 'acerMON3/'%}, image: 'acerMON3.webp', rating: '4', price: 11799 , release: new Date('2020-07-09'), creditTag: 'www.acer.com'},
+			    { name: 'Nitro VG270 Sbmiipx', url: {% url 'acerMON4/'%}, image: 'acerMON4.webp', rating: '4', price: 13499 , release: new Date('2020-09-20'), creditTag: 'www.acer.com'},
+			    { name: 'AOpen 27HC5R Z', url: {% url 'acerMON5/'%}, image: 'acerMON5.webp', rating: '5', price: 13699 , release: new Date('2021-03-30'), creditTag: 'www.acer.com'}
+			];
+			let options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+			function sort(brand, field, type) {
+
+			    let list;
+
+			    if(brand == 'nvision'){
+			        list = nvisionMonitorList;
+			    }else if(brand == 'asus'){
+			        list = asusMonitorList;
+			    }else if(brand == 'acer'){
+			        list = acerMonitorList;
+			    }
+
+			    if(field == 'rating'){   
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.rating - b.rating;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.rating - a.rating;
+			                });
+			        }
+			    } else if (field == 'price'){
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.price - b.price;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.price - a.price;
+			                });
+			        }
+			    } else if (field == 'release'){
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.release - b.release;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.release - a.release;
+			                });
+			        }
+			    }
+
+			    console.log(list);
+
+			    document.getElementById('container3').innerHTML = '<a href="'+ list[0].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[0].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[0].name +' | Photo Credits: '+ list[0].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[0].url +'">'+ list[0].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[0].rating +' / 5<br>Price: '+ list[0].price.toLocaleString() +' PHP<br>Release: '+ list[0].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container4').innerHTML = '<a href="'+ list[1].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[1].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[1].name +' | Photo Credits: '+ list[1].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[1].url +'">'+ list[1].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[1].rating +' / 5<br>Price: '+ list[1].price.toLocaleString() +' PHP<br>Release: '+ list[1].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container5').innerHTML = '<a href="'+ list[2].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[2].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[2].name +' | Photo Credits: '+ list[2].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[2].url +'">'+ list[2].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[2].rating +' / 5<br>Price: '+ list[2].price.toLocaleString() +' PHP<br>Release: '+ list[2].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container6').innerHTML = '<a href="'+ list[3].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[3].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[3].name +' | Photo Credits: '+ list[3].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[3].url +'">'+ list[3].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[3].rating +' / 5<br>Price: '+ list[3].price.toLocaleString() +' PHP<br>Release: '+ list[3].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container7').innerHTML = '<a href="'+ list[4].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[4].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[4].name +' | Photo Credits: '+ list[4].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[4].url +'">'+ list[4].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[4].rating +' / 5<br>Price: '+ list[4].price.toLocaleString() +' PHP<br>Release: '+ list[4].release.toLocaleDateString("en-US", options) +'</p>';
+			}
+
+		</script>
+
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Ctitle1">NVISION MONITORS</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Cline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+		<div class="grid-containerC">
+			<div class="Ccontainer2">
+				<form>
+					<a class="Coptions2A" href="{% url 'monitor/'%}">BACK</a>
+					<a class="Coptions2B"></a>
+					<a class="Coptions2C">SORT BY PRICE:</a>
+					<input type="button" class="sort-button" onclick="sort('nvision', 'price', 'desc')" title="HIGH TO LOW" value="High to Low">
+					<a class="Coptions2C">|</a>
+					<input type="button" class="sort-button" onclick="sort('nvision', 'price', 'asc')" title="LOW TO HIGH" value="Low to High">
+					<a class="Coptions2C">SORT BY RELEASE DATE:</a>
+					<input type="button" class="sort-button" onclick="sort('nvision', 'release', 'desc')" title="RECENT TO OLDEST" value="Latest to Oldest">
+					<a class="Coptions2C">|</a>
+					<input type="button" class="sort-button" onclick="sort('nvision', 'release', 'asc')" title="OLDEST TO RECENT" value="Oldest to Latest">
+				</form>
+			</div>
+			
+			<div class="Ccontainer3" id="container3">
+				<a href="{% url 'nvisionMON1/'%}">
+				<img src="{% static 'images/nvisionMON1.webp' %}" class="Cimg1"width="150px" height="130px" title="Nvision IP24V1 | Photo Credits: www.easypc.com.ph">
+				</a>
+				<a class="Ctitle2" href="{% url 'nvisionMON1/'%}{% url 'nvisionMON1/'%}">Nvision IP24V1</a>
+				<p class="Cdescription1">TMTK Ratings: 4 / 5<br>Price: 6,699 PHP<br>Release: January 25, 2020</p>
+			</div>
+			<div class="Ccontainer4" id="container4">
+				<a href="{% url 'nvisionMON2/'%}">
+				<img src="{% static 'images/nvisionMON2.webp' %}" class="Cimg1"width="150px" height="130px" title="Nvision IP22V1 21.5 in  | Photo Credits: www.easypc.com.ph">
+				</a>
+				<a class="Ctitle2" href="{% url 'nvisionMON2/'%}">Nvision IP22V1 21.5"</a>
+				<p class="Cdescription1">TMTK Ratings: 3.5 / 5<br>Price: 3,595 PHP<br>Release: May 23, 2020</p>
+			</div>
+			<div class="Ccontainer5" id="container5">
+				<a href="{% url 'nvisionMON3/'%}">
+				<img src="{% static 'images/nvisionMON3.webp' %}" class="Cimg1"width="150px" height="130px" title="	Nvision GT27R18V3 27 in  | Photo Credits: www.easypc.com.ph">
+				</a>
+				<a class="Ctitle2" href="{% url 'nvisionMON3/'%}">Nvision GT27R18V3 27"</a>
+				<p class="Cdescription1">TMTK Ratings: 5 / 5<br>Price: 10,095 PHP<br>Release: February 11, 2020</p>							
+			</div>
+			<div class="Ccontainer6" id="container6">
+				<a href="{% url 'nvisionMON4/'%}">
+				<img src="{% static 'images/nvisionMON4.webp' %}" class="Cimg1"width="150px" height="130px" title="	Nvision GT24R18V3 24  | Photo Credits: www.easypc.com.ph">
+				</a>
+				<a class="Ctitle2" href="{% url 'nvisionMON4/'%}">Nvision GT24R18V3 24" </a>
+				<p class="Cdescription1">TMTK Ratings: 4 / 5<br>Price: 7,699 PHP<br>Release: February 11, 2020</p>										
+			</div>
+			<div class="Ccontainer7" id="container7">
+				<a href="{% url 'nvisionMON5/'%}">
+				<img src="{% static 'images/nvisionMON5.webp' %}" class="Cimg1"width="150px" height="130px" title="	Nvision N190HD 19 | Photo Credits: www.easypc.com.ph">
+				</a>
+				<a class="Ctitle2" href="{% url 'nvisionMON5/'%}">Nvision N190HD 19"</a>
+				<p class="Cdescription1">TMTK Ratings: 3.5 / 5<br>Price: 2,495 PHP<br>Release: February 6, 2021</p>
+			</div>
+			<div class="Ccontainer8">
+
+			</div>
+		</div>
+
+	</body>
+{%endblock%}

@@ -1,0 +1,98 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+<form>
+	<style type="text/css">
+		table{
+			border: 1px solid black; border-collapse: collapse;  background-color: #96D4D4; font-size: 12px; text-align: center; margin-top: -20px;
+		}
+		th{ 
+			border: 1px solid black; border-collapse: collapse;  background-color: #96D4D4; width: 200px
+		}
+
+		td{
+			border: 1px solid black; border-collapse: collapse;  background-color: #96D4D4;
+		}
+	</style>
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Etitle1">ORDER SUMMARY</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Eline1">______________________________________________________________________________________________________________</p>
+		</div>
+		{% for item in sum %}
+		<center>
+		<table>
+			<tr><p class="ElegendTitle">USER INFORMATION</p>
+			<th>Name</th>
+			<th>User Type</th>
+			<th>E-mail</th>
+			<th>Cellphone No</th>
+			<th>Name of Organization</th>
+			<th>Address</th>
+			</tr>
+			
+			<tr>
+				<td>{{item.user.lastName}}, {{item.user.firstName}}</td>
+				<td>{{item.user.userType}}</td>
+				<td>{{item.user.emailAddress}}</td>
+				<td>{{item.user.contactNumber}}</td>
+				<td>{{item.user.organization}}</td>
+				<td>{{item.user.homeAddress}}</td>
+			</tr>
+		</table>
+		<br><br>
+
+		<table>
+		<tr> <p class="ElegendTitle">GADGET INFORMATION</p>
+			<th>Gadget Type</th>
+			<th>Gadget Name</th>
+			<th>Quantity</th>
+			<th>Additional Message</th>
+		</tr>
+
+		<tr>
+			<td>{{item.gadget.typeG}}</td>
+			<td>{{item.gadget.gadgetname}}</td>
+			<td>{{item.gadget.quantity}}</td>
+			<td>{{item.gadget.mesCon}}</td>
+		</tr>
+
+
+		</table>
+		<br><br>
+
+		<table>
+			<tr><p class="ElegendTitle">DELIVERY INFORMATION</p> 
+			<th>Delivery Date</th>
+			<th>Mode of Delivery</th>
+			<th>Mode of Payment</th>
+			<th>Cash</th>
+			</tr>
+
+			<tr>
+				<td>{{item.delivery.dateOrder}}</td>
+				<td>{{item.delivery.delProcess}}</td>
+				<td>{{item.delivery.modPay}}</td>
+				<td>{{item.delivery.cash}}</td>
+			</tr>
+			
+		</table>
+		</center>
+			<br>
+
+		<div>
+	        	<center>
+	        	 <br><br>
+		        <button type="button" class="Ebuttons1"> <a href="/delete/{{item.user.id}}/{{item.id}}">Delete</a></button>
+		        <button type="button" name="submit" class="Ebuttons1"><a href="/edit/{{item.user.id}}/{{item.id}}">Edit</a></button>
+		        </center>
+{% endfor %}
+			</form>
+			</div>
+	</body>
+{% endblock %}

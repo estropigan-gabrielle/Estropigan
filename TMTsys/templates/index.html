@@ -1,0 +1,43 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+		<div>
+			<center>
+				<p class="title1">WELCOME TO THE TECHNOLOGICAL WORLD!</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="line1">______________________________________________________________________________________________________________</p>
+		</div>
+
+		<div class="grid-containerA">
+			<div class="container1">
+				<img src= "{% static 'images/techkid.webp' %}" title="Hi! I'm Gabby" width="140" height="180" class="img1" alt="IMAGE HERE">
+				<p class="description1">Hi I'm Gabby <q>The Modern Tech Kid</q>. Since we are living in the new normal wherein <acronym title="Information and Communications Technology">ICT</acronym>-integrated materials are introduced for online class and content creating, this site will help you choose what is the perfect gadget for you!. In this site you can see and review the available peripherals in the market. We will review items, review them based on its performance and convenience. We will also post the estimated prices of the peripherals. For you to gain more info about the gadget a YouTube video is also included. To start the hunt for the budget-worthy and perfect gadgets for you just choose at the options above.</p>
+			</div>
+			<div class="container2">
+				<h1 class="title2"><center>FEATURED GADGET&nbsp;TODAY!</center></h1>
+				<a href="{% url 'lenovoL1/'%}">
+				<img src="static/images/lenovoL1.webp" width="250px" height="150px" class="img2" >
+				</a>
+				<p class="description2">LENOVO THINKPAD X1 FOLD</p>
+			</div>
+			<div class="container3">
+				<center>
+				<p class="title3">NEWLY RELEASED GADGETS</p>
+				<a href="{% url 'asusL1/'%}"><img src=static/images/asusL1.webp class= "img3" alt="Pic1" width="100px" height="80px" title="VIVOBOOK PRO 16X OLED"></a>		
+				<a href="{% url 'nvisionMON1/'%}"><img src=static/images/nvisionMON1.webp class= "img3" alt="Pic2" width="100px" height="80px" title="NVISION IP24V1"></a>
+				<a href="{% url 'razerMOU1/'%}"><img src=static/images/razerMOU1.webp class= "img3" alt="Pic3" width="100px" height="80px" title="RAZER VIPER 8KHZ"></a>
+				<a href="{% url 'corKEY3/'%}"><img src=static/images/corKEY3.webp class= "img3" alt="Pic4" width="100px" height="80px" title="CORSAIR K65"></a>
+				</center>
+			</div>
+			<div class="container4">
+				<p class="title4">FOR INQUIRIES, SUGGESTIONS AND QUESTIONS JUST FILL OUT THE FORM BELOW:</p>
+				<center>
+				<a href="{% url 'contact/'%}" class="description3">CONTACT FORM</a>
+				</center>
+			</div>
+                </div>
+                
+{% endblock %}

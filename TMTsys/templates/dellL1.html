@@ -1,0 +1,166 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}	
+			<script type="text/javascript">
+			function showCompare(price){
+			    console.log('Show Modal');
+			    document.querySelector('#modal-compare').style.display = 'flex';
+			    document.querySelector('#price').value = price;
+			}
+
+			function showModal(){
+			}
+
+				function hideModal(){
+				    console.log('Hide Modal');
+				    document.querySelector('#modal-compare').style.display = 'none';
+			}
+
+			function comparePrice(){
+			    let price = document.querySelector('#price').value;
+			    let cash = document.querySelector('#cash').value;
+			    console.log(price);
+			    console.log(cash);
+			    console.log(Number(cash) >= Number(price));
+			    console.log(Number(price) - Number(cash));
+
+			    if (Number(cash) == Number(price)){
+			    	document.querySelector('#message-equal').style.display = 'flex';
+			    	document.querySelector('#message-enough').style.display = 'none';
+			        document.querySelector('#message-short').style.display = 'none';
+			        document.querySelector('#equal').innerHTML = 'Your budget is enough!';
+			    }
+			    else if(Number(cash) >= Number(price)){
+			        document.querySelector('#message-enough').style.display = 'flex';
+			        document.querySelector('#message-short').style.display = 'none';
+			        document.querySelector('#message-equal').style.display = 'none';
+			        document.querySelector('#enough').innerHTML = 'You have enough budget! \nYou have an extra ₱' + [(Number(cash)).toString()-Number(price)]+'\nCheck and review more items!';
+			    }
+
+			    else{
+			        document.querySelector('#message-short').style.display = 'flex';
+			        document.querySelector('#message-enough').style.display = 'none';
+			        document.querySelector('#message-equal').style.display = 'none';
+			        document.querySelector('#short').innerHTML = 'You don\'t have enough budget! \nYou need additional ₱' +  (Number(price) - Number(cash)).toString();
+			    }
+			}	
+		</script>
+	</head>
+
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Dtitle1">DELL INSPIRON 14 (5410)</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Dline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+
+		<div class="grid-containerD">
+			<div class="Dcontainer2">
+				<a class="Doptions2A" href="{% url 'laptopDell/'%}">BACK</a>
+			</div>
+			
+			<div class="Dcontainer3">
+
+				<button type="button" onclick="showCompare(33605.55)" class="Ebuttons2">Compare The Price!</button>
+
+				<div class="bg-modal" id="modal-compare">
+					<div class="modal-compare">
+						<form>
+                                                        <h3>PRICE VS. BUDGET</h3>
+                                                        <table>
+                                                                <tr>
+                                                                        <td>
+                                                                                Unit Price: 
+                                                                        </td>
+                                                                        <td>
+                                                                                <input type="text" name="price" value="" id="price" disabled>
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>
+                                                                                Budget:
+                                                                        </td>
+                                                                        <td>
+                                                                                <input type="number" name="cash" value="" id="cash">
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                        <input type="button" class="Ebuttons1 button-modal" onclick="comparePrice()" value="Compare">
+                                                        <center>
+                                                                <div class="compare-short" id="message-short">
+                                                                        <p id="short"></p>
+                                                                </div>
+                                                                <div class="compare-enough" id="message-enough">
+                                                                        <p id="enough"></p>
+                                                                </div>
+                                                                <div class="compare-equal" id="message-equal">
+                                                                        <p id="equal"></p>
+                                                                </div>
+                                                        </center>
+                                                        <div class="close-modal" onclick="hideModal()">+</div>
+                                                </form>
+					</div>
+				</div>
+				
+				<img src="{% static 'images/dellL1.webp' %}" class="Dimg1a"width="230px" height="200px" title="DELL INSPIRON 14 (5410) | Photo Credits: www.dell.com">
+			</div>
+			<div class="Dcontainer4">
+                                        <table class="Ddescription1">
+                                                <tr>
+                                                        <td class="Ddescription1color"><b>GENERAL&nbsp;INFORMATION</b></td>
+                                                        <td></td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">NAME:</td>
+                                                        <td>DELL INSPIRON 14 (5410)</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">TMTK RATINGS:</td>
+                                                        <td>4 / 5</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">RELEASE DATE:</td>
+                                                        <td>April 13, 2021</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">PRICE:</td>
+                                                        <td>33,605.55 PHP</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">PROCESSOR:</td>
+                                                        <td>Intel Core i3 11th Gen Core i3-1115G4</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">RAM:</td>
+                                                        <td>4GB</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="Ddescription1color">Download the Full Specs:</td>
+                                                        <td><a href="pdf/dellL1.pdf" class="Ddescription1" target="_blank">Dell Laptop 1</a></td>
+                                                </tr>
+                                        </table>
+                                        
+                                        
+                                </div>
+                                <div class="Dcontainer5">
+                                        <p class="Ddescription2">Dell Inspiron 14 is a new release for 2021. Dell is one of the premium laptop that’s available in the market. This new release costs about 34,000 PHP which is quite pricey for students. Looking as it specs it has basic specs for an online class lDaptop which are first the Intel i3 processor and a RAM of 4GB. Considering its price this laptop has no graphics, meaning this laptop can be used only for minor activities like doing assignments or word files. But for heavy duties like photoshop or gaming this is not recommendable.</p>	
+                                </div>
+                                <div class="Dcontainer6">
+                                        <iframe class="Dvid1" width="300" height="110" src="https://www.youtube.com/embed/z1BydFwlGPw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                
+                                <div class="Dcontainer7">
+                                        <br>
+                                        <center>
+                                        <a class="Ddescription3" href="{% url 'feedback/'%}">DID YOU LIKE OUR REVIEW? PLEASE SEND US A FEEDBACK!</a>	
+                                        </center>		
+                                </div>
+                                
+		</div>
+	</body>
+{%endblock%}

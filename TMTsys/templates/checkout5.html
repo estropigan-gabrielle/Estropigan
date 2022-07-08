@@ -1,0 +1,64 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+	<body class="bodyBG">
+	<form method="POST">
+{% csrf_token %}
+		<div>
+			<center>
+				<p class="Etitle1">ORDER</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Eline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+
+		<div>
+				<!-- USER -->
+				<center>
+					
+				<fieldset class="Efieldset2">
+					<legend class="ElegendTitle">EDIT USER INFORMATION</legend>
+
+					<label for="first_name" class="Eoptions2">FIRST NAME:</label>	
+		        	<input type ="text" name="firstName" value="{{user.firstName}}" placeholder="ex. Juan" required="" class="Etextfields1" onfocusout="updateProgressBarText('firstName', this.value)">
+
+		        	<label for="last_name" class="Eoptions2"> LAST NAME: </label>
+		        	<input type ="text" name="lastName" value="{{user.lastName}}" placeholder="ex. Dela Cruz" required="" class="Etextfields1" onfocusout="updateProgressBarText('lastName', this.value)">
+		        	<br>
+		        	<label for="org" class="Eoptions2">USER TYPE:</label>
+		        	<select name="userType" value="{{user.userType}}" required="" class="Etextfields1" onchange="updateProgressBarSelect('org', this.value)">
+		        	<option value ="DEFAULT" selected disabled>-----------</option>	
+		            <option value ="STUDENT">STUDENT</option>
+		            <option value="TEACHER">TEACHER</option>
+		            <option value="CONTENT-CREATOR">CONTENT-CREATOR</option>
+		        	</select>
+
+		        	<label for="email_address" class="Eoptions2"> E-MAIL ADDRESS: </label>
+		        	<input type ="text" name="emailAddress"  value="{{user.emailAddress}}" placeholder="ex. name@gmail.com" required="" class="Etextfields1" onfocusout="updateProgressBarText('email', this.value)"> 
+
+		        	<br>
+		        	<label for="cellphone_number" class="Eoptions2"> CELLPHONE NUMBER: </label>
+		        	<input type ="text" name="contactNumber" value="{{user.contactNumber}}" pattern="[0-9]{11}" placeholder="09XXXXXXXXX" required="" class="Etextfields1" onfocusout="updateProgressBarText('phone', this.value)">
+
+		            <label for="organization_name" class="Eoptions2">NAME OF ORGANIZATION:</label>
+		        	<input type ="text" name="organization" value="{{user.organization}}" placeholder="ex. TUP-Cavite" required="" class="Etextfields1" onfocusout="updateProgressBarText('orgname', this.value)">
+
+		        	<label for="organization_name" class="Eoptions2">HOME ADDRESS:</label>
+		        	<input type ="text" name="homAddress" value="{{user.homeAddress}}" placeholder="ex. TUP-Cavite" required="" class="Etextfields1" onfocusout="updateProgressBarText('orgname', this.value)">
+		        </center>
+		        
+		        <center>
+		        <button type="submit" name="submit" class="Ebuttons1">Update</button> 
+			
+				</center>
+	        	</fieldset><br>
+
+
+
+			</form>
+			</div>
+	</body>
+{% endblock %}

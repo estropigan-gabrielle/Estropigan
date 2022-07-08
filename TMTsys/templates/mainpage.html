@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TMTK</title>
+    </head>
+    <body>
+    
+
+    <form method=POST>
+    {% csrf_token %}
+    <h1>Contact Us</h1>
+    
+    <fieldset id="INQUIRY">
+        <legend>INQUIRY TYPE</legend>
+            <input type="radio" name="favs" value="INQUIRY" required onclick="updateProgressBarRadio('inquiry')">
+            <label for="INQUIRY" class="Eoptions3" id="s1">INQUIRY</label>
+
+            <input type="radio" name="favs" value="SUGGESTION" onclick="updateProgressBarRadio('inquiry')">
+            <label for="SUGGESTION" class="Eoptions3">SUGGESTION</label>
+
+            <input type="radio" name="favs" value="QUESTION" onclick="updateProgressBarRadio('inquiry')">
+            <label for="QUESTION" class="Eoptions3">QUESTION</label>
+    </fieldset>
+
+    <br>
+    <br>
+
+    <fieldset>
+        <legend>PERSONAL INFORMATION</legend>
+
+            <label>FIRST NAME:</label><input type="text" id="cu1" name="cu1a" placeholder="Your First Name" required/>
+
+            <label>LAST NAME:</label><input type="text" id="cu2" name="cu1b" placeholder="Your Last Name" required/>
+
+            <label>AGE:</label><input type="text" id="cu3" name="cu1c" placeholder="Your Age" required/>
+            <br>
+            <br>
+            <label>E-MAIL ADDRESS:</label><input type="email" id="cu4" name="cu1d" placeholder="Your E-mail Address" required /> 
+            <label>CELLPHONE NUMBER:</label><input type="text" id="cu5" name="cu1e" placeholder="Your Cellphone Number" required /> 
+            <br>
+            <br>
+            <label>ORGANIZATION:</label>
+            <select name="cu1f" id="cu6"placeholder='Organization' required >
+                        <option value ="" disabled selected="">-------</option>
+                        <option value ="OFFICE">OFFICE</option>
+                        <option value ="SCHOOL/UNIVERSITY">SCHOOL/UNIVERSITY</option>
+                        <option value="ORGANIZATION">ORGANIZATION</option>
+            </select>
+
+            <label>NAME OF ORGANIZATION:</label><input type="text" id="cu7" name="cu1g" placeholder="Enter Name of Organization" required /> 
+    </fieldset>
+    <br>
+    <br>
+    <fieldset>
+        <legend>MESSAGE</legend>
+            <textarea id="cu8" placeholder="Enter Your Message Here" name="cu1h" required></textarea>
+    </fieldset>
+    <br>
+    <input id="btnSubmit" type="submit" value="Submit"/>
+    <button id="btnReset" type="reset" class="button" >Reset</button>
+    <br><br>
+    <table id="entryTable">
+        {% for item in personal%}
+        
+        <tr>
+            <td>{{forloop.counter}}: {{item.option1}}, {{item.fname}}, {{item.lname}}, {{item.age}}, {{item.email}}, {{item.celno}}, {{item.org}}, {{item.orgn}}, {{item.message}}</td>
+        </tr>
+   
+        {% endfor %}
+    </table>
+    </form>
+    </body>
+</html>

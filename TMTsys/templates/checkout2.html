@@ -1,0 +1,141 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+	<body class="bodyBG">
+		<form method="POST">
+			{%csrf_token%}
+		<div>
+			<center>
+				<p class="Etitle1">ORDER</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Eline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+
+		<div>
+				<!-- USER -->
+
+				<center>
+				<p class="ElegendTitle">USER: {{useno.lastName}}, {{useno.firstName}} </p>
+
+	        	<fieldset class="Efieldset2">
+					<legend class="ElegendTitle">GADGET</legend>
+
+					<label for="first_name" class="Eoptions2">TYPE:</label>	
+		        	<select name="typeg" required="" class="Etextfields1" onchange="updateProgressBarSelect('org', this.value)">
+		        	<option value ="DEFAULT" selected>-----------</option>	
+		            <option value ="LAPTOP">LAPTOP</option>
+		            <option value="MONITOR">MONITOR</option>
+		            <option value="MOUSE">MOUSE</option>
+		            <option value="KEYBOARD">KEYBOARD</option>
+		            </select>
+		            <label for="first_name" class="Eoptions2">NAME:</label>	
+		        	<select name="gadgetname" required="" class="Etextfields1" onchange="updateProgressBarSelect('org', this.value)">
+
+		        	<option value ="NONE" selected>----------------</option>
+		        	<option value ="DEFAULT" disabled>-----ASUS LAPTOP-----</option>	
+		            <option value="VIVOBOOK PRO 16X OLED (M7600, AMD RYZEN 5000 SERIES)">VIVOBOOK PRO 16X OLED (M7600, AMD RYZEN 5000 SERIES)</option>
+		            <option value="VIVOBOOK S15 S532 (11TH GEN INTEL) ">VIVOBOOK S15 S532 (11TH GEN INTEL) </option>
+		            <option value="VIVOBOOK 17 X712">VIVOBOOK 17 X712</option>
+		            <option value="VIVOBOOK FLIP 14 TM420 (AMD RYZEN 5000 SERIES)">VIVOBOOK FLIP 14 TM420 (AMD RYZEN 5000 SERIES)</option>
+		            <option value="VIVOBOOK GO 15 (E510)">VIVOBOOK GO 15 (E510)</option>
+
+		            <option value ="DEFAULT" disabled>-----LENOVO LAPTOP-----</option>	
+		            <option value="LENOVO THINKPAD X1 FOLD">LENOVO THINKPAD X1 FOLD</option>
+		            <option value="LENOVO IDEAPAD 3I 14-INCH CHROMEBOOK">LENOVO IDEAPAD 3I 14-INCH CHROMEBOOK</option>
+		            <option value="LENOVO IDEAPAD SLIM 5 PRO">LENOVO IDEAPAD SLIM 5 PRO</option>
+		            <option value="LENOVO LEGION 5i PRO (2021)">LENOVO LEGION 5i PRO (2021)</option>
+		            <option value="LENOVO YOGA 7 SLIM CARBON">LENOVO YOGA 7 SLIM CARBON</option>
+
+		            <option value ="DEFAULT" disabled>-----DELL LAPTOP-----</option>	
+		            <option value="DELL INSPIRON 14 (5410)">DELL INSPIRON 14 (5410)</option>
+		            <option value="DELL INSPIRON 15 5000">DELL INSPIRON 15 5000</option>
+		            <option value="DELL VOSTRO 3568">DELL VOSTRO 3568</option>
+		            <option value="DELL XPS 17 (9710)">DELL XPS 17 (9710)</option>
+		            <option value="DELL G15 RYZEN EDITION">DELL G15 RYZEN EDITION</option>
+
+
+		            <option value ="DEFAULT" disabled>-----NVISION MONITOR-----</option>	
+		            <option value="NVISION IP24V1 23.8>NVISION IP24V1 23.8"></option>
+		            <option value="NVISION IP22V1 21.5 IPS GAMING MONITOR">NVISION IP22V1 21.5" IPS GAMING MONITOR</option>
+		            <option value="NVISION GT27R18V3 27 165HZ CURVED GAMING MONITOR">NVISION GT27R18V3 27" 165HZ CURVED GAMING MONITOR</option>
+		            <option value="NVISION GT24R18V3 24 144HZ CURVED GAMING MONITOR">NVISION GT24R18V3 24" 144HZ CURVED GAMING MONITOR</option>
+		            <option value="NVISION N190HD LED MONITOR">NVISION N190HD LED MONITOR</option>
+
+		            <option value ="DEFAULT" disabled>-----ASUS MONITOR-----</option>	
+		            <option value="ASUS VG249Q1R 23.8">ASUS VG249Q1R 23.8</option>
+		            <option value="ASUS ROG STRIX XG27WQ GAMING MONITOR">ASUS ROG STRIX XG27WQ GAMING MONITOR</option>
+		            <option value="ASUS ROG STRIX XG438Q">ASUS ROG STRIX XG438Q</option>
+		            <option value="ASUS TUF GAMING VG32VQ CURVED GAMING MONITOR">ASUS TUF GAMING VG32VQ CURVED GAMING MONITOR</option>
+		            <option value="ASUS ROG SWIFT PG32UQX GAMING MONITOR">ASUS ROG SWIFT PG32UQX GAMING MONITOR</option>
+
+		            <option value ="DEFAULT" disabled>-----ACER MONITOR-----</option>	
+		            <option value="NITRO EG220QPHBIPX">NITRO EG220QPHBIPX</option>
+		            <option value="AOPEN 22CV1Q">AOPEN 22CV1Q</option>
+		            <option value="NITRO VG240Y SVBMIIPX">NITRO VG240Y SVBMIIPX</option>
+		            <option value="NITRO VG270 SBMIIPX">NITRO VG270 SBMIIPX</option>
+		            <option value="AOPEN 27HC5R Z">AOPEN 27HC5R Z</option>
+
+		            <option value ="DEFAULT" disabled>-----RAZER MOUSE-----</option>	
+		            <option value="RAZER VIPER 8KHZ AMBIDEXTROUS ESPORTS ">RAZER VIPER 8KHZ AMBIDEXTROUS ESPORTS </option>
+		            <option value="RAZER BASILISK X HYPERSPEED WIRELESS GAMING MOUSE">RAZER BASILISK X HYPERSPEED WIRELESS GAMING MOUSE</option>
+		            <option value="RAZER VIPER ULTIMATE WITH CHARGING DOCK ">RAZER VIPER ULTIMATE WITH CHARGING DOCK </option>
+		            <option value="RAZER DEATHADDER V2 PRO">RAZER DEATHADDER V2 PRO</option>
+		            <option value="RAZER BASILISK CHROMA GAMING MOUSE">RAZER BASILISK CHROMA GAMING MOUSE</option>
+
+		            <option value ="DEFAULT" disabled>-----LOGITECH MOUSE-----</option>	
+		            <option value="LOGITECH MX MASTER 2S">LOGITECH MX MASTER 2S</option>
+		            <option value="LOGITECH G903 LIGHTSPEED WIRELESS GAMING MOUSE">LOGITECH G903 LIGHTSPEED WIRELESS GAMING MOUSE</option>
+		            <option value="LOGITECH G304 LIGHTSPEED WIRELESS GAMING MOUSE">LOGITECH G304 LIGHTSPEED WIRELESS GAMING MOUSE</option>
+		            <option value="LOGITECH G102 PRODIGY GAMING MOUSE">LOGITECH G102 PRODIGY GAMING MOUSE</option>
+		            <option value="LOGITECH M185 WIRELESS MOUSE">LOGITECH M185 WIRELESS MOUSE</option>
+
+
+		            <option value ="DEFAULT" disabled>-----STEELSERIES MOUSE-----</option>	
+		            <option value="STEELSERIES RIVAL 710 GAMING MOUSE">STEELSERIES RIVAL 710 GAMING MOUSE</option>
+		            <option value="STEELSERIES RIVAL 600 GAMING MOUSE">STEELSERIES RIVAL 600 GAMING MOUSE</option>
+		            <option value="STEELSERIES RIVAL 310 GAMING MOUSE">STEELSERIES RIVAL 310 GAMING MOUSE</option>
+		            <option value="STEELSERIES 62527 SENSEI TEN GAMING MOUSE">STEELSERIES 62527 SENSEI TEN GAMING MOUSE</option>
+		            <option value="STEELSERIES RIVAL 3 62513 GAMING MOUSE BLACK">STEELSERIES RIVAL 3 62513 GAMING MOUSE BLACK</option>
+
+		            <option value ="DEFAULT" disabled>-----LOGITECH KEYBOARD-----</option>	
+		            <option value="LOGITECH K120">LOGITECH K120</option>
+		            <option value="LOGITECH K480 MULTI-DEVICE BLUETOOTH KEYBOARD">LOGITECH K480 MULTI-DEVICE BLUETOOTH KEYBOARD</option>
+		            <option value="LOGITECH K270">LOGITECH K270</option>
+		            <option value="LOGITECH K380">LOGITECH K380</option>
+		            <option value="LOGITECH MK240">LOGITECH MK240</option>
+
+		            <option value ="DEFAULT" disabled>-----RAZER KEYBOARD-----</option>	
+		            <option value="RAZER HUNTSMAN MINI LINEAR">RAZER HUNTSMAN MINI LINEAR</option>
+		            <option value="RAZER HUNTSMAN MINI CLICKY">RAZER HUNTSMAN MINI CLICKY</option>
+		            <option value="RAZER BLACKWIDOW V3 BLACK MECHANICAL">RAZER BLACKWIDOW V3 BLACK MECHANICAL</option>
+		            <option value="RAZER BLACKWIDOW V3, TENKEYLESS">RAZER BLACKWIDOW V3, TENKEYLESS</option>
+		            <option value="RAZER HUNTSMAN QUARTZ">RAZER HUNTSMAN QUARTZ</option>
+
+		            <option value ="DEFAULT" disabled>-----CORSAIR KEYBOARD-----</option>	
+		            <option value="CORSAIR K63 COMPACT MECHANICAL GAMING KEYBOARD">CORSAIR K63 COMPACT MECHANICAL GAMING KEYBOARD</option>
+		            <option value="CORSAIR K57 RGB WIRELESS WITH SLIPSTREAM">CORSAIR K57 RGB WIRELESS WITH SLIPSTREAM</option>
+		            <option value="CORSAIR K65 RGB MINI">CORSAIR K65 RGB MINI</option>
+		            <option value="CORSAIR K60 PRO">CORSAIR K60 PRO</option>
+		            <option value="CORSAIR K55 RGB ">CORSAIR K55 RGB </option>
+
+		           	</select>
+		           
+		        	<label for="age" class="Eoptions2"> QUANTITY: </label>
+		        	<input type ="text" name="qty" placeholder="UNIT (PC)" required="" class="Etextfields1" onfocusout="updateProgressBarText('age', this.value)"><br><br>
+
+		        	<label for="age" class="Eoptions2"> ADDITIONAL MESSAGE: </label><br>
+		        	<textarea name="mesCon"></textarea>
+
+	        	</fieldset>
+	        	<center>
+	        	 <button type="submit" name="submit"t class="Ebuttons1">Next
+		        </button>
+		        </center>
+			</form>
+			</div>
+	</body>
+{% endblock %}

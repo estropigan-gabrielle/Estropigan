@@ -1,0 +1,176 @@
+{% extends 'nav.html'%}
+{% load static %}
+{%block content%}
+		<script type="text/javascript">
+			let asusLaptopList = [
+			    { name: 'Vivobook Pro 16X OLED', url: {% url 'asusL1/'%}, image: 'asusL1.webp', rating: '4.5', price: 70924.89 , release: new Date('2021-09-02'), creditTag: 'www.asus.com'},
+			    { name: 'Vivobook S15 S532', url: {% url 'asusL2/'%}, image: 'asusL2.webp', rating: '3', price: 35200 , release: new Date('2019-05-09'), creditTag: 'www.asus.com'},
+			    { name: 'Vivobook 17 X712', url: {% url 'asusL3/'%}, image: 'asusL3.webp', rating: '5', price: 34170 , release: new Date('2021-03-30'), creditTag: 'www.asus.com'},
+			    { name: 'Vivobook Flip 14 TM420', url: {% url 'asusL4/'%}, image: 'asusL4.webp', rating: '4', price: 42955 , release: new Date('2021-03-30'), creditTag: 'www.asus.com'},
+			    { name: 'Vivobook Go 15', url: {% url 'asusL5/'%}, image: 'asusL5.webp', rating: '4.5', price: 34995 , release: new Date('2019-06-11'), creditTag: 'www.asus.com'}
+			];
+
+			let lenovoLaptopList = [
+			    { name: 'Lenovo ThinkPad X1 Fold', url: {% url 'lenovoL1/'%}, image: 'lenovoL1.webp', rating: '5', price: 208499 , release: new Date('2020-01-06'), creditTag: 'www.lenovo.com'},
+			    { name: 'Lenovo IdeaPad 3i', url: {% url 'lenovoL2/'%}, image: 'lenovoL2.webp', rating: '4', price: 17464.69 , release: new Date('2021-09-30'), creditTag: 'www.lenovo.com'},
+			    { name: 'Lenovo IdeaPad Slim 5 Pro', url: {% url 'lenovoL3/'%}, image: 'lenovoL3.webp', rating: '5', price: 51000 , release: new Date('2021-09-03'), creditTag: 'www.lenovo.com'},
+			    { name: 'Lenovo Legion 5i Pro', url: {% url 'lenovoL4/'%}, image: 'lenovoL4.webp', rating: '4', price: 124995 , release: new Date('2021-05-11'), creditTag: 'www.lenovo.com'},
+			    { name: 'Lenovo Yoga 7 Slim Carbon', url: {% url 'lenovoL5/'%}, image: 'lenovoL5.webp', rating: '4.5', price:78995 , release: new Date('2021-09-08'), creditTag: 'www.lenovo.com'}
+			];
+
+
+			let dellLaptopList = [
+			    { name: 'Dell Inspiron 14 (5410)', url: {% url 'dellL1/'%}, image: 'dellL1.webp', rating: '4', price: 33605.55 , release: new Date('2021-04-13'), creditTag: 'www.dell.com'},
+			    { name: 'Dell Inspiron 15 5000', url: {% url 'dellL2/'%}, image: 'dellL2.webp', rating: '4.5', price: 40328 , release: new Date('2019-09-08'), creditTag: 'www.dell.com'},
+			    { name: 'Dell Vostro 3568', url: {% url 'dellL3/'%}, image: 'dellL3.webp', rating: '3', price: 20400 , release: new Date('2019-09-07'), creditTag: 'www.dell.com'},
+			    { name: 'Dell XPS 17 (9710)', url: {% url 'dellL4/'%}, image: 'dellL4.webp', rating: '4.5', price: 43357.09 , release: new Date('2021-05-11'), creditTag: 'www.dell.com'},
+			    { name: 'Dell G15 Ryzen Edition', url: {% url 'dellL5/'%}, image: 'dellL5.webp', rating: '5', price: 61200 , release: new Date('2021-04-07'), creditTag: 'www.dell.com'}
+			];
+			let options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+			function sort(brand, field, type) {
+
+			    let list;
+
+			    if(brand == 'asus'){
+			        list = asusLaptopList;
+			    }else if(brand == 'lenovo'){
+			        list = lenovoLaptopList;
+			    }else if(brand == 'dell'){
+			        list = dellLaptopList;
+			    }
+
+			    if(field == 'rating'){   
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.rating - b.rating;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.rating - a.rating;
+			                });
+			        }
+			    } else if (field == 'price'){
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.price - b.price;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.price - a.price;
+			                });
+			        }
+			    } else if (field == 'release'){
+			        if(type == 'asc'){
+			            list.sort(function(a, b) {
+			                return a.release - b.release;
+			                });
+			        }else{
+			            list.sort(function(a, b) {
+			                return b.release - a.release;
+			                });
+			        }
+			    }
+
+			    console.log(list);
+
+			    document.getElementById('container3').innerHTML = '<a href="'+ list[0].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[0].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[0].name +' | Photo Credits: '+ list[0].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[0].url +'">'+ list[0].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[0].rating +' / 5<br>Price: '+ list[0].price.toLocaleString() +' PHP<br>Release: '+ list[0].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container4').innerHTML = '<a href="'+ list[1].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[1].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[1].name +' | Photo Credits: '+ list[1].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[1].url +'">'+ list[1].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[1].rating +' / 5<br>Price: '+ list[1].price.toLocaleString() +' PHP<br>Release: '+ list[1].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container5').innerHTML = '<a href="'+ list[2].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[2].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[2].name +' | Photo Credits: '+ list[2].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[2].url +'">'+ list[2].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[2].rating +' / 5<br>Price: '+ list[2].price.toLocaleString() +' PHP<br>Release: '+ list[2].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container6').innerHTML = '<a href="'+ list[3].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[3].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[3].name +' | Photo Credits: '+ list[3].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[3].url +'">'+ list[3].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[3].rating +' / 5<br>Price: '+ list[3].price.toLocaleString() +' PHP<br>Release: '+ list[3].release.toLocaleDateString("en-US", options) +'</p>';
+
+			    document.getElementById('container7').innerHTML = '<a href="'+ list[4].url +'">' +
+			    '<img src="{% static 'images/' %}'+ list[4].image +'" class="Cimg1"width="180px" height="130px" title="'+ list[4].name +' | Photo Credits: '+ list[4].creditTag +'">' +
+			    '</a>' +
+			    '<a class="Ctitle2" href="'+ list[4].url +'">'+ list[4].name +'</a>' +
+			    '<p class="Cdescription1">TMTK Ratings: '+ list[4].rating +' / 5<br>Price: '+ list[4].price.toLocaleString() +' PHP<br>Release: '+ list[4].release.toLocaleDateString("en-US", options) +'</p>';
+
+			}
+		</script>
+
+	</head>
+
+	<body class="bodyBG">
+		<div>
+			<center>
+				<p class="Ctitle1">LENOVO LAPTOPS</p>
+			</center>
+		</div>
+		
+		<div>
+			<p class="Cline1">______________________________________________________________________________________________________________</p>
+		</div>
+
+		<div class="grid-containerC">
+			<div class="Ccontainer2">
+				<form>
+					<a class="Coptions2A" href="{% url 'laptop/'%}">BACK</a>
+					<a class="Coptions2B"></a>
+					<a class="Coptions2C">SORT BY PRICE:</a>
+					<input type="button" class="sort-button" onclick="sort('lenovo', 'price', 'desc')" title="HIGH TO LOW" value="High to Low">
+					<a class="Coptions2C">|</a>
+					<input type="button" class="sort-button" onclick="sort('lenovo', 'price', 'asc')" title="LOW TO HIGH" value="Low to High">
+					<a class="Coptions2C">SORT BY RELEASE DATE:</a>
+					<input type="button" class="sort-button" onclick="sort('lenovo', 'release', 'desc')" title="RECENT TO OLDEST" value="Latest to Oldest">
+					<a class="Coptions2C">|</a>
+					<input type="button" class="sort-button" onclick="sort('lenovo', 'release', 'asc')" title="OLDEST TO RECENT" value="Oldest to Latest">
+				</form>
+			</div>
+			
+			<div class="Ccontainer3" id="container3">
+				<a href="{% url 'lenovoL1/'%}">
+				<img src="{% static 'images/lenovoL1.webp' %}" class="Cimg1"width="150px" height="130px" title="Lenovo ThinkPad X1 Fold | Photo Credits: www.lenovo.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'lenovoL1/'%}">Lenovo ThinkPad X1 Fold</a>
+				<p class="Cdescription1">TMTK Ratings: 5 / 5<br>Price: PHP 208,499<br>Release: January 6, 2020
+				</p>
+			</div>
+			<div class="Ccontainer4" id="container4">
+				<a href="{% url 'lenovoL2/'%}">
+				<img src="{% static 'images/lenovoL2.webp' %}" class="Cimg1"width="150px" height="130px" title="Lenovo IdeaPad 3i | Photo Credits: www.lenovo.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'lenovoL2/'%}">Lenovo IdeaPad 3i</a>
+				<p class="Cdescription1">TMTK Ratings: 4 / 5<br>Price: 17,464.69 PHP<br>Release: September 30, 2021</p>
+			</div>
+			<div class="Ccontainer5" id="container5">
+				<a href="{% url 'lenovoL3/'%}">
+				<img src="{% static 'images/lenovoL3.webp' %}" class="Cimg1"width="150px" height="130px" title="Lenovo IdeaPad Slim 5 Pro | Photo Credits: www.lenovo.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'lenovoL3/'%}">Lenovo IdeaPad Slim 5 Pro</a>
+				<p class="Cdescription1">TMTK Ratings: 5 / 5<br>Price: 51,000 PHP<br>Release: September 3, 2021</p>							
+			</div>
+			<div class="Ccontainer6" id="container6">
+				<a href="{% url 'lenovoL4/'%}">
+				<img src="{% static 'images/lenovoL4.webp' %}" class="Cimg1"width="150px" height="130px" title="Lenovo Legion 5i Pro | Photo Credits: www.lenovo.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'lenovoL4/'%}">Lenovo Legion 5i Pro</a>
+				<p class="Cdescription1">TMTK Ratings: 4 / 5<br>Price: 124,995 PHP<br>Release: May 11,2021</p>										
+			</div>
+			<div class="Ccontainer7" id="container7">
+				<a href="{% url 'lenovoL5/'%}">
+				<img src="{% static 'images/lenovoL5.webp' %}" class="Cimg1"width="150px" height="130px" title="Lenovo Yoga 7 Slim Carbon | Photo Credits: www.lenovo.com">
+				</a>
+				<a class="Ctitle2" href="{% url 'lenovoL5/'%}">Lenovo Yoga 7 Slim Carbon</a>
+				<p class="Cdescription1">TMTK Ratings: 4.5 / 5<br>Price: 78,995 PHP<br>Release: September 8, 2021</p>
+			</div>
+	</body>
+{%endblock%}
